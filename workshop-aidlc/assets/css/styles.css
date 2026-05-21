@@ -328,6 +328,27 @@ body {
     margin-top: 1.25rem;
 }
 
+.workshop-setup-heading {
+    align-items: center;
+    background: #fff8e6;
+    border-left: 4px solid var(--aws-orange);
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+}
+
+.workshop-setup-heading .step-badge {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+}
+
+.workshop-setup-heading h3 {
+    margin: 0;
+}
+
 .tutorial-block ol {
     padding-left: 1.25rem;
 }

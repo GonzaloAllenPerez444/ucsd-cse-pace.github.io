@@ -59,20 +59,21 @@
                     <li>Docker Compose for the Operations packaging step</li>
                     <li>Code editor</li>
                 </ul>
+                <a href="setup-instructions.html#workshop-1-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 1 Setup Instructions</a>
             </div>
 
             <h3 class="mt-5 mb-3">Workshop Activities</h3>
 
             <!-- Tabs -->
             <ul class="nav nav-tabs method-tabs" role="tablist">
-                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-workflow" role="tab"><i class="bi bi-diagram-3"></i> Using AI-DLC Workflow</a></li>
-                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-prompts" role="tab"><i class="bi bi-clipboard"></i> Copy-Paste Prompts</a></li>
+                <li class="nav-item d-none"><a class="nav-link" data-bs-toggle="tab" href="#tab-workflow" role="tab"><i class="bi bi-diagram-3"></i> Using AI-DLC Workflow</a></li>
+                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-prompts" role="tab"><i class="bi bi-clipboard"></i> Copy-Paste Prompts</a></li>
             </ul>
 
             <div class="tab-content tab-content-bordered">
 
 <!-- ==================== AI-DLC WORKFLOW TAB ==================== -->
-<div class="tab-pane fade show active" id="tab-workflow" role="tabpanel">
+<div class="tab-pane fade d-none" id="tab-workflow" role="tabpanel">
 
     <div class="alert alert-info"><i class="bi bi-info-circle"></i> <strong>Prerequisite:</strong> AI-DLC Workflow rules installed in your coding assistant. <a href="setup-instructions.html#workshop-1-setup">Workshop 1 Setup Instructions →</a></div>
     <div class="alert alert-warning"><i class="bi bi-exclamation-triangle"></i> AI-DLC Workflow is adaptive. Based on how you answer questions, the complexity of your request, and the AI's assessment, some stages may be skipped, combined, or run at different levels of detail. The activities below represent the typical flow for this use case, but your experience may differ. The workflow will always tell you what it's doing and why — follow its lead and approve or request changes at each gate.</div>
@@ -239,7 +240,7 @@ Please explain how this would work for our specific task manager application.</p
 </div>
 
 <!-- ==================== COPY-PASTE PROMPTS TAB ==================== -->
-<div class="tab-pane fade" id="tab-prompts" role="tabpanel">
+<div class="tab-pane fade show active" id="tab-prompts" role="tabpanel">
     <div class="alert alert-secondary"><i class="bi bi-clipboard"></i> Copy and paste each prompt into your AI assistant. Follow the activities in order.</div>
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Setup</span> Activity 1: Setup (10 minutes)</div>
@@ -378,7 +379,7 @@ curl http://localhost:5000/health</pre>
         </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-4 mt-5">
+    <footer class="bg-dark text-white text-center py-4 mt-5 d-none">
         <div class="container"><p class="mb-0">&copy; 2026 AWS AI-DLC Workshop Series</p></div>
     </footer>
 

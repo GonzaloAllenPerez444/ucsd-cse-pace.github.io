@@ -56,6 +56,7 @@
                         <a href="#before-you-start">Before You Start</a>
                         <a href="#ai-coding-tools">AI Coding Tools</a>
                         <a href="#openai-codex">Option A: OpenAI Codex</a>
+                        <a href="#codex-students">Codex for Students</a>
                         <a href="#codex-windows">Codex on Windows</a>
                         <a href="#codex-wsl">Codex on WSL Ubuntu</a>
                         <a href="#codex-macos">Codex on Mac OS</a>
@@ -117,7 +118,22 @@ npm --version</code></pre>
                         <span class="step-badge">Option A</span>
                         <h2>OpenAI Codex</h2>
                         <p>Codex CLI runs in your terminal. The official release guidance highlights macOS and Linux binaries, so Windows workshop users should use WSL2 Ubuntu unless native Windows support has been confirmed for their environment.</p>
+                        <div class="alert alert-danger"><i class="bi bi-exclamation-triangle-fill"></i> <strong>Subscription required:</strong> Using this Coding Agent requires a paid premium subscription to <a href="https://chatgpt.com/pricing/" target="_blank" class="alert-link">Open AI ChatGPT Plus Plan</a>.</div>
+                        <div class="alert alert-warning"><i class="bi bi-mortarboard-fill"></i> <strong>Student option:</strong> A GitHub Student Developer Pack or GitHub Pro Student account does not automatically provide ChatGPT Plus or Codex access. However, verified university students in the United States and Canada may be eligible for OpenAI Codex student credits. Visit <a href="https://chatgpt.com/codex/students/" target="_blank" class="alert-link">Codex for university students</a>, sign in with your ChatGPT account, and complete student verification through SheerID.</div>
                         <div class="alert alert-info">Official references: <a href="https://help.openai.com/en/articles/11096431-openai-codex-ci-getting-started" target="_blank">OpenAI Help Center</a> and <a href="https://github.com/openai/codex" target="_blank">OpenAI Codex GitHub</a>.</div>
+
+                        <article id="codex-students" class="tutorial-block">
+                            <h3><i class="bi bi-mortarboard"></i> Students with GitHub Education</h3>
+                            <ol>
+                                <li>Confirm your GitHub Education or Student Developer Pack status if your school uses GitHub benefits.</li>
+                                <li>Create or sign in to your personal ChatGPT account.</li>
+                                <li>Visit <a href="https://chatgpt.com/codex/students/" target="_blank">Codex for university students</a>.</li>
+                                <li>Complete student verification through SheerID using your university eligibility details.</li>
+                                <li>After approval, use the same ChatGPT account when signing in to Codex CLI.</li>
+                                <li>If using Codex web or cloud features, connect your GitHub account when prompted.</li>
+                            </ol>
+                            <p class="setup-note">GitHub Student Developer Pack benefits are useful for GitHub Pro, Copilot Student, repositories, and related tools, but Codex student credits are claimed through OpenAI's student verification flow.</p>
+                        </article>
 
                         <article id="codex-windows" class="tutorial-block">
                             <h3><i class="bi bi-windows"></i> Windows</h3>
@@ -169,6 +185,7 @@ codex</code></pre>
                         <span class="step-badge">Option B</span>
                         <h2>Claude Code</h2>
                         <p>Claude Code runs in a terminal and requires an Anthropic-supported account. Anthropic supports macOS, Ubuntu/Debian, and Windows through WSL or Git for Windows.</p>
+                        <div class="alert alert-danger"><i class="bi bi-exclamation-triangle-fill"></i> <strong>Subscription required:</strong> Using this Coding Agent requires a paid premium subscription to <a href="https://claude.com/pricing/pro" target="_blank" class="alert-link">Claude Pro</a>.</div>
                         <div class="alert alert-info">Official references: <a href="https://docs.anthropic.com/en/docs/claude-code/getting-started" target="_blank">Claude Code setup</a> and <a href="https://code.claude.com/docs/en/setup" target="_blank">advanced setup</a>.</div>
 
                         <article id="claude-windows" class="tutorial-block">
@@ -291,8 +308,10 @@ wget https://huggingface.co/mad-lab-ai/Qwen3.6-27B-tq-gguf/resolve/main/Qwen3.6-
                         <p>Use these workshop-specific prerequisites after choosing an AI coding tool. Workshop 1 and Workshop 3 are detailed because they are being prepared as local-first, open-source-stack workshops. Workshops 2, 4, and 5 have light placeholders until their stacks are reviewed.</p>
 
                         <article id="workshop-1-setup" class="tutorial-block">
-                            <span class="step-badge">Workshop 1</span>
-                            <h3>Task Manager Application</h3>
+                            <div class="workshop-setup-heading">
+                                <span class="step-badge">Workshop 1</span>
+                                <h3>Task Manager Application</h3>
+                            </div>
                             <p>Required stack: Python Flask, SQLite, a minimal HTML frontend, local browser testing, and Docker Compose for the Operations packaging step.</p>
                             <div class="table-responsive">
                                 <table class="table table-sm align-middle">
@@ -362,8 +381,10 @@ python app.py</code></pre>
                         </article>
 
                         <article id="workshop-2-setup" class="tutorial-block">
-                            <span class="step-badge">Workshop 2</span>
-                            <h3>Local Job Application Website</h3>
+                            <div class="workshop-setup-heading">
+                                <span class="step-badge">Workshop 2</span>
+                                <h3>Local Job Application Website</h3>
+                            </div>
                             <p>Required stack: React, Vite, seeded job data, browser <code>localStorage</code>, and Docker Compose for the Operations packaging step.</p>
                             <div class="table-responsive">
                                 <table class="table table-sm align-middle">
@@ -429,8 +450,10 @@ npm run preview -- --host 0.0.0.0</code></pre>
                         </article>
 
                         <article id="workshop-3-setup" class="tutorial-block">
-                            <span class="step-badge">Workshop 3</span>
-                            <h3>Portable File-Sharing System</h3>
+                            <div class="workshop-setup-heading">
+                                <span class="step-badge">Workshop 3</span>
+                                <h3>Portable File-Sharing System</h3>
+                            </div>
                             <p>Required stack: Docker Compose, Python, Node.js, MinIO for S3-compatible object storage, ScyllaDB Alternator for DynamoDB-compatible metadata, a local API service, and a React frontend.</p>
                             <div class="table-responsive">
                                 <table class="table table-sm align-middle">
@@ -493,8 +516,10 @@ docker run --rm hello-world</code></pre>
                         </article>
 
                         <article id="workshop-4-setup" class="tutorial-block">
-                            <span class="step-badge">Workshop 4</span>
-                            <h3>E-Commerce Product Catalog</h3>
+                            <div class="workshop-setup-heading">
+                                <span class="step-badge">Workshop 4</span>
+                                <h3>E-Commerce Product Catalog</h3>
+                            </div>
                             <p>Required stack: React, Vite, FastAPI, SQLite, Python, Node.js, and Docker Compose for the Operations packaging step.</p>
                             <div class="table-responsive">
                                 <table class="table table-sm align-middle">
@@ -585,8 +610,10 @@ npm run preview -- --host 0.0.0.0</code></pre>
                         </article>
 
                         <article id="workshop-5-setup" class="tutorial-block d-none">
-                            <span class="step-badge">Workshop 5</span>
-                            <h3>Brownfield E-Commerce</h3>
+                            <div class="workshop-setup-heading">
+                                <span class="step-badge">Workshop 5</span>
+                                <h3>Brownfield E-Commerce</h3>
+                            </div>
                             <p>Required stack: existing Node.js backend, React frontend, SQLite database, Docker Compose, and AI-DLC reverse engineering. SQLite CLI is recommended for inspecting and debugging the existing database.</p>
                             <div class="table-responsive">
                                 <table class="table table-sm align-middle">
@@ -681,7 +708,7 @@ claude doctor</code></pre>
         </div>
     </main>
 
-    <footer class="bg-dark text-white text-center py-4 mt-5">
+    <footer class="bg-dark text-white text-center py-4 mt-5 d-none">
         <div class="container">
             <p class="mb-0">&copy; 2026 AWS AI-DLC Workshop Series</p>
         </div>
