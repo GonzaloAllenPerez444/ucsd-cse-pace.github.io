@@ -25,6 +25,7 @@
         .phase-inception { background: #bbdefb; color: #1565c0; }
         .phase-construction { background: #c8e6c9; color: #2e7d32; }
         .phase-operations { background: #fff59d; color: #f57f17; }
+        .todo-placeholder { background: #fff3cd; border: 2px dashed #ffc107; padding: 0 4px; border-radius: 3px; font-style: italic; color: #856404; }
     </style>
 </head>
 <body>
@@ -60,6 +61,10 @@
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-1-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 1 Setup Instructions</a>
+                <p></p>
+                <h3>Task Overview</h3>
+                <p> We have just been hired by our new clients to create a hit new app. However, they are very vague as to what the app is and what they want. Here is what they have told us so far:</p>
+                <p>“We want a simple task manager such that a user can add tasks to do for the day. Users should be able to view them all at once, and be able to give them labels of importance based on how important that specific task is. There should be a feature to delete tasks from the current list as well. These are all the features that we need at this time.”</p>
             </div>
 
             <h3 class="mt-5 mb-3">Workshop Activities</h3>
@@ -258,9 +263,24 @@ Acknowledge the intent and confirm understanding.</pre></div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: User Stories Creation (30 minutes)</div>
+        <div class="think-box mb-3">💡 For the following prompt, consider how you would describe our target application to a project manager, then fill in the blank before prompting. What things should we consider here?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-2',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-2">Your Role: You are an expert product manager and are tasked with creating well defined user stories that becomes the contract for developing the system as mentioned in the Task section below. Plan for the work ahead and write your steps in an md file (user_stories_plan.md) with checkboxes for each step in the plan. If any step needs my clarification, add a note in the step to get my confirmation. Do not make critical decisions on your own. Upon completing the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
-Your Task: Build user stories for the high-level requirement as described here: "Build a simple task manager that allows me to add new tasks and view my task list. Keep it simple with just these two core features." Save the final user stories in aidlc-docs/story-artifacts/mvp_user_stories.md file.</pre></div>
+Your Task: Build user stories for the high-level requirement as described here: "<span id="p-2-todo" class="todo-placeholder">✏️ TODO: fill in your application description below</span>" Save the final user stories in aidlc-docs/story-artifacts/mvp_user_stories.md file.</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-2-input">How would you describe the application</label>
+            <textarea id="p-2-input" class="form-control" rows="2" placeholder="Describe the target application here..." oninput="updateTodoPlaceholder('p-2-todo', this.value, '✏️ TODO: fill in your application description below')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-2-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Prompt
+            </button>
+            <div class="collapse mt-2" id="p-2-example">
+                <div class="card card-body bg-light fst-italic">
+                    "Build a simple task manager that allows me to add new tasks and view my task list. Keep it simple with just these two core features."
+                </div>
+            </div>
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After AI shows the plan, respond:</strong><br><code>Yes, I like your plan as in the user_stories_plan.md. Now exactly follow the same plan. Interact with me as specified in the plan. Once you finish each step, mark the checkboxes in the plan.</code></div>
     </div>
 
@@ -269,6 +289,13 @@ Your Task: Build user stories for the high-level requirement as described here: 
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-3',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-3">Your Role: You are an experienced software architect. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/units_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to the user stories in aidlc-docs/story-artifacts/mvp_user_stories.md file. Group the user stories into a single cohesive unit called "Task Management Unit" that contains all the user stories. Save this as aidlc-docs/design-artifacts/task_management_unit.md.</pre></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/story-artifacts/mvp_user_stories.md</code> and <code>aidlc-docs/design-artifacts/task_management_unit.md</code> and review what the AI produced.
+            <br><br>
+            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            <br><br>
+            <strong>Ask yourself:</strong> Do the user stories match what the client described? Are the acceptance criteria specific enough that a developer (or AI) could implement them unambiguously, or are there gaps that could lead to the wrong thing being built?
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After AI shows the plan, respond:</strong><br><code>I approve. Proceed.</code></div>
     </div>
 
@@ -277,11 +304,19 @@ Your Task: Refer to the user stories in aidlc-docs/story-artifacts/mvp_user_stor
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-4',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-4">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in an aidlc-docs/design-artifacts/component_model_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to the user stories in the aidlc-docs/design-artifacts/task_management_unit.md file. Design the component model to implement all the user stories. This model shall contain all the components, the attributes, the behaviors and how the components interact to implement the user stories. Do not generate any codes yet. Write the component model into aidlc-docs/design-artifacts/task_component_model.md file.</pre></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/design-artifacts/task_component_model.md</code> and review the component model the AI designed — no code has been written yet, only structure.
+            <br><br>
+            The component model defines the building blocks of the system: what classes exist, what data they hold, what they can do, and how they communicate. This is the last checkpoint before the AI starts generating code.
+            <br><br>
+            <strong>Ask yourself:</strong> Can you trace each user story to a specific component and its behaviors? Are there any components that seem unnecessary, or any behaviors missing that the stories require?
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After AI shows the plan, respond:</strong><br><code>I approve the plan. Proceed. After completing each step, mark the checkbox in your plan file.</code></div>
     </div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Code Generation (35 minutes)</div>
+        <div class="think-box mb-3">💡 Think about one additional feature you'd like the task manager to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-5',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-5">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in an aidlc-docs/plans/code_generation_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Task: Refer to component design in the aidlc-docs/design-artifacts/task_component_model.md file. Generate a simple local-first Python Flask implementation for the Task Management Component with these features:
@@ -291,6 +326,7 @@ Task: Refer to component design in the aidlc-docs/design-artifacts/task_componen
 - Provide a minimal HTML frontend at /
 - Keep JSON API endpoints available for curl testing
 - Validate that task title is required
+- <span id="p-5-todo" class="todo-placeholder">✏️ TODO: describe your additional feature here</span>
 
 Generate files under taskManager:
 - app.py
@@ -301,10 +337,25 @@ Generate files under taskManager:
 - static/styles.css if useful
 - requirements.txt
 - tests for service, repository, and API behavior</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-5-input">What feature would you like to add to the task manager?</label>
+            <textarea id="p-5-input" class="form-control" rows="2" placeholder="e.g. Delete tasks from the list" oninput="updateTodoPlaceholder('p-5-todo', this.value, '✏️ TODO: describe your additional feature here')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-5-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Feature
+            </button>
+            <div class="collapse mt-2" id="p-5-example">
+                <div class="card card-body bg-light fst-italic">
+                    "Delete tasks from the list"
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Build APIs (15 minutes)</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> If the feature you added in Activity 5 requires a new API endpoint, describe it in the box below so it gets wired up here. If your feature works entirely within the existing routes, you can leave this blank.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-6',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-6">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in an md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Task: Refer to the task_service.py under the taskManager/ folder. Create Flask routes for:
@@ -313,8 +364,23 @@ Task: Refer to the task_service.py under the taskManager/ folder. Create Flask r
 - GET /tasks for JSON API task listing
 - POST /ui/tasks or a similar form-compatible task creation route if needed
 - GET /health for local health checks
+- <span id="p-6-todo" class="todo-placeholder">✏️ TODO: add a route for your feature if it requires one (optional — remove if not needed)</span>
 
 Routes must use the SQLite-backed repository through the service layer. Test the browser flow and curl API flow.</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-6-input">Does your feature need a new API route? If so, describe it. <span class="text-muted fw-normal fst-italic">(optional)</span></label>
+            <textarea id="p-6-input" class="form-control" rows="2" placeholder="e.g. DELETE /tasks/&lt;id&gt; to delete a task" oninput="updateTodoPlaceholder('p-6-todo', this.value, '✏️ TODO: add a route for your feature if it requires one (optional — remove if not needed)')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-6-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Route
+            </button>
+            <div class="collapse mt-2" id="p-6-example">
+                <div class="card card-body bg-light fst-italic">
+                    "DELETE /tasks/&lt;id&gt; to delete a task"
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="mb-4">
@@ -373,6 +439,16 @@ curl http://localhost:5000/tasks
 # Check application health
 curl http://localhost:5000/health</pre>
     </div>
+
+    <div class="mb-4 mt-5">
+        <div class="prompt-title"><span class="step-badge" style="background:#6f42c1;">Bonus</span> Bonus: Compare Implementations</div>
+        <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
+            <p>Earlier, one of our engineers followed the exact same steps you just did and created this prototype. In what ways are the two apps similar and different? Where could the differences have crept in?</p>
+            <div class="text-center mt-3">
+                <img src="../images/aidlc_workshop1_example.png" alt="Example task manager prototype built by an engineer following the AI-DLC workshop steps" class="img-fluid rounded border" style="max-width:100%;">
+            </div>
+        </div>
+    </div>
 </div>
 
             </div><!-- /tab-content-bordered -->
@@ -395,6 +471,12 @@ curl http://localhost:5000/health</pre>
             btn.classList.add('btn-success'); btn.classList.remove('btn-light');
             setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-light'); }, 2000);
         });
+    }
+    function updateTodoPlaceholder(spanId, value, defaultText) {
+        const span = document.getElementById(spanId);
+        if (!span) return;
+        span.textContent = value.trim() || defaultText;
+        span.classList.toggle('todo-placeholder', !value.trim());
     }
     </script>
 </body>
