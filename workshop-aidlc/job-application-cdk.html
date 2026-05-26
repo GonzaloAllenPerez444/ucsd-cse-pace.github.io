@@ -25,6 +25,7 @@
         .phase-inception { background: #bbdefb; color: #1565c0; }
         .phase-construction { background: #c8e6c9; color: #2e7d32; }
         .phase-operations { background: #fff59d; color: #f57f17; }
+        .todo-placeholder { background: #fff3cd; border: 2px dashed #ffc107; padding: 0 4px; border-radius: 3px; font-style: italic; color: #856404; }
     </style>
 </head>
 <body>
@@ -57,6 +58,10 @@
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-2-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 2 Setup Instructions</a>
+                <p></p>
+                <h3>Task Overview</h3>
+                <p>We have just been hired by a new client to build their hit new job board. They are not very technical and are vague about the details. Here is what they have told us so far:</p>
+                <p>“We want a site where people looking for work can browse the jobs we have posted and apply right from the page. Folks should be able to search and narrow things down so they aren't scrolling forever, and it would be nice if they could save the postings they like to come back to later. That's roughly what we're picturing for now.”</p>
             </div>
             <h3 class="mt-5 mb-3">Workshop Activities</h3>
             <ul class="nav nav-tabs method-tabs" role="tablist">
@@ -227,12 +232,26 @@ Please explain how this would work for our specific application.</pre></div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Step 1: Intent to User Stories</div>
+        <div class="think-box mb-3">💡 For the following prompt, consider how you would describe the client's job board to a product manager, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-1',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-1">Your Role: You are an expert product manager and are tasked with creating well defined user stories that becomes the contract for developing the system as mentioned in the Task section below. Plan for the work ahead and write your steps in a Markdown file: user_stories_plan.md with checkboxes for each step in the plan. List your Deliverables in the plan. If any step needs my clarification, add a note in the step to get my confirmation. Do not make critical decisions on your own. Upon completing the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
-Your Task: Build user stories for the high level requirement as described here: A job application management site that allows:
-- Applicants to search, view, and apply to job postings
+Your Task: Build user stories for the high level requirement as described here: "<span id="p-1-todo" class="todo-placeholder">✏️ TODO: fill in your application description below</span>"
 
 Write the user stores to a user_stories.md file</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-1-input">How would you describe the application?</label>
+            <textarea id="p-1-input" class="form-control" rows="2" placeholder="Describe the target application here..." oninput="updateTodoPlaceholder('p-1-todo', this.value, '✏️ TODO: fill in your application description below')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-1-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Prompt
+            </button>
+            <div class="collapse mt-2" id="p-1-example">
+                <div class="card card-body bg-light fst-italic">
+                    "A job application management site that allows applicants to search, view, and apply to job postings, and save postings to revisit later."
+                </div>
+            </div>
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing user_stories_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
 
@@ -241,6 +260,13 @@ Write the user stores to a user_stories.md file</pre></div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-2',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-2">Your Role: You are an experienced software architect. Before you start the task as mentioned below, please do the planning and write your steps in the units_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Group these user stories in user_stories.md into multiple units that can be built independently. Each unit contains highly cohesive user stories that can be built by a single team. The units are loosely coupled with each other. For each unit, write the respective user stories and acceptance criteria in a units.md file.</pre></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the artifacts before approving.</strong> Open <code>user_stories.md</code> and <code>units.md</code> and review what the AI produced.
+            <br><br>
+            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            <br><br>
+            <strong>Ask yourself:</strong> Do the user stories match what the client described? Did searching, filtering, and saving postings make it in, or did anything get dropped? Are the units split so that one team could build each one without stepping on another?
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing units_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
 
@@ -249,11 +275,19 @@ Your Task: Group these user stories in user_stories.md into multiple units that 
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-3',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-3">Your Role: You are an experienced software architect and engineer. Before you start the task as mentioned below, please do the planning and write your steps in in a Markdown file named component_model_plan.md with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to the user stories in the units.md file. Design the component model to implement all the user stories. This model shall contain all the components, the attributes, the behaviors and how the components interact to implement the user stories. The components should be at a business level, do not generate any codes yet. Write the component model into a Markdown file: component_model.md.</pre></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the artifacts before approving.</strong> Open <code>component_model.md</code> and review the component model the AI designed — no code has been written yet, only structure.
+            <br><br>
+            The component model defines the building blocks of the site: what components exist, what data they hold, what they can do, and how they communicate. This is the last checkpoint before the AI starts generating code.
+            <br><br>
+            <strong>Ask yourself:</strong> Can you trace each user story to a specific component and its behaviors? Is there a clear place where saved/bookmarked postings and the localStorage persistence live, or any behavior the stories require that has no home?
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing component_model_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Construction</span> Step 4: Code Generation</div>
+        <div class="think-box mb-3">💡 Think about one additional feature you'd like the job board to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-4',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-4">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in the markdown file react_app_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to component design in the component_model.md file and the units.md file.
@@ -264,8 +298,23 @@ Do not add login or authentication.
 Populate the app with seeded job data (50+ jobs) in a local JS or JSON module.
 Applicants can search, filter, sort, view job details, and submit an application form.
 Submitted applications must persist in browser localStorage.
+Additional feature: <span id="p-4-todo" class="todo-placeholder">✏️ TODO: describe your additional feature here</span>
 Build the React application and attempt to resolve any errors. Install any tools you need.
 Use npm install and npm run build. If tests are generated, run them. Use Vite preview only for local verification.</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-4-input">What feature would you like to add to the job board?</label>
+            <textarea id="p-4-input" class="form-control" rows="2" placeholder="e.g. Save jobs to a bookmarks list" oninput="updateTodoPlaceholder('p-4-todo', this.value, '✏️ TODO: describe your additional feature here')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-4-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Feature
+            </button>
+            <div class="collapse mt-2" id="p-4-example">
+                <div class="card card-body bg-light fst-italic">
+                    "Save jobs to a bookmarks list so applicants can revisit them later"
+                </div>
+            </div>
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing react_app_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
 
@@ -292,6 +341,16 @@ Requirements:
 - Review the validation report and fix all identified issues, then update the validation report</pre></div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing deployment_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
+
+    <div class="mb-4 mt-5">
+        <div class="prompt-title"><span class="step-badge" style="background:#6f42c1;">Bonus</span> Bonus: Compare Implementations</div>
+        <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
+            <p>Earlier, one of our engineers followed the exact same steps you just did and created this prototype. In what ways are the two apps similar and different? Where could the differences have crept in?</p>
+            <div class="text-center mt-3">
+                <img src="../images/aidlc_workshop2_example.png" alt="Example job application site prototype built by an engineer following the AI-DLC workshop steps" class="img-fluid rounded border" style="max-width:100%;">
+            </div>
+        </div>
+    </div>
 </div>
             </div>
         </div>
@@ -311,6 +370,12 @@ Requirements:
             btn.classList.add('btn-success'); btn.classList.remove('btn-light');
             setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-light'); }, 2000);
         });
+    }
+    function updateTodoPlaceholder(spanId, value, defaultText) {
+        const span = document.getElementById(spanId);
+        if (!span) return;
+        span.textContent = value.trim() || defaultText;
+        span.classList.toggle('todo-placeholder', !value.trim());
     }
     </script>
 </body>
