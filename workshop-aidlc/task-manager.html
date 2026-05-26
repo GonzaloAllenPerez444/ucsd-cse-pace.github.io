@@ -26,6 +26,7 @@
         .phase-construction { background: #c8e6c9; color: #2e7d32; }
         .phase-operations { background: #fff59d; color: #f57f17; }
         .todo-placeholder { background: #fff3cd; border: 2px dashed #ffc107; padding: 0 4px; border-radius: 3px; font-style: italic; color: #856404; }
+        .todo-filled { background: #fff3cd; border: 2px solid #ffc107; padding: 0 4px; border-radius: 3px; color: #856404; }
     </style>
 </head>
 <body>
@@ -58,7 +59,7 @@
                     <li>Access to an AI assistant (Kiro, Claude, Cursor, etc.)</li>
                     <li>Python 3.11+, <code>venv</code>, and <code>pip</code></li>
                     <li>Browser for the minimal HTML frontend</li>
-                    <li>Docker Compose for the Operations packaging step</li>
+                    <li>Docker Compose (optional, for the Operations packaging step — a no-Docker path is provided)</li>
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-1-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 1 Setup Instructions</a>
@@ -102,7 +103,7 @@
 
     <!-- Activity 1 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Start</span> Activity 1: Start the Workflow (10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Start</span> Activity 1: Start the Workflow</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>You kick off the entire workflow with a single prompt describing what you want to build. AI-DLC Workflow takes it from there — it detects your workspace, sets up tracking, and starts guiding you through the phases.</p>
             <div class="think-box">💡 <strong>Think about your task manager:</strong> This one prompt is all you need. The workflow handles folder structure, role assignment, planning, and approval gates automatically.</div>
@@ -117,7 +118,7 @@
 
     <!-- Activity 2 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Requirements Analysis (~15 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Requirements Analysis</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI analyzes your request and asks clarifying questions about anything unclear. The number and content of questions vary based on your initial prompt. You'll also see a question about enabling security extension rules.</p>
             <div class="think-box">💡 <strong>Think about your task manager:</strong> Use SQLite persistence by default so tasks survive restarts. Keep in-memory storage only for tests or prototypes. Single user or multi-user? These are the kinds of decisions the AI may ask you to make here.</div>
@@ -130,7 +131,7 @@
 
     <!-- Activity 3 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories (~20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI creates user stories that become the contract for what gets built. It runs in two parts: first it plans how to structure the stories (and asks you about organization style and detail level), then it generates the actual stories with personas and acceptance criteria.</p>
             <div class="think-box">💡 <strong>Think about your task manager:</strong> You'll get stories around "add a task" and "view task list." Notice how the acceptance criteria cover both happy paths (valid task created) and error scenarios (missing title returns 400). These criteria become the contract that code generation follows later.</div>
@@ -144,7 +145,7 @@
 
     <!-- Activity 4 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Workflow Planning (~5 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Workflow Planning</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI looks at everything gathered so far and decides which Construction stages to run. It generates an execution plan with a visual diagram showing what's completed, what will execute, and what's being skipped.</p>
             <div class="think-box">💡 <strong>Think about your task manager:</strong> Since this is a simple two-feature app, expect most design stages to be skipped. The AI recognizes that a basic task manager doesn't need NFR analysis or complex functional design — it goes straight to code generation. If you want Docker Compose packaging for the Operations step, this is where you'd ask the AI to add Local Packaging.</div>
@@ -161,7 +162,7 @@
 
     <!-- Activity 5 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Code Generation (~35 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Code Generation</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>This is the main build activity. The AI creates a plan for what code to generate, gets your approval, then executes it step by step — checking off each item as it goes. Code goes in the workspace root, documentation goes in <code>aidlc-docs/</code>.</p>
             <div class="think-box">💡 <strong>Think about your task manager:</strong> The code generation plan will trace directly back to your user stories. The "add task" flow should work from both the HTML form and JSON API. The "view tasks" flow should render in the browser and remain available as JSON for curl tests. SQLite should persist tasks between restarts.</div>
@@ -178,7 +179,7 @@
 
     <!-- Activity 6 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 6: Local Packaging + Operations (~15 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 6: Local Packaging + Operations</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <div class="note-box mb-2">Skip this activity if Local Packaging was not added to your execution plan.</div>
             <p>The AI packages the local-first Flask application for repeatable Operations use. It generates Docker Compose artifacts, a local deployment guide, and validation notes.</p>
@@ -197,7 +198,7 @@
 
     <!-- Activity 7 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 7: Build and Test (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 7: Build and Test</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow generates build and test instructions covering how to build, run, and test the application.</p>
             <div class="note-box mb-2">The exact directory name, file names, port, and endpoints may vary based on what the AI generated. Check the build instructions for the exact commands for your project.</div>
@@ -232,7 +233,7 @@ curl http://localhost:5000/health</pre>
 
     <!-- Activity 8 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Discussion (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Discussion</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow's Operations phase is a placeholder for future expansion. This is a group discussion about what comes after building.</p>
             <div class="think-box">💡 <strong>Think about your task manager:</strong> How would you monitor API response times, local logs, and container health? How would you back up and restore the SQLite database? How would you migrate from SQLite to PostgreSQL later without breaking the existing API contract?</div>
@@ -265,12 +266,12 @@ Please explain how this would work for our specific task manager application.</p
 <div class="tab-pane fade show active" id="tab-prompts" role="tabpanel">
     <div class="alert alert-secondary"><i class="bi bi-clipboard"></i> Copy and paste each prompt into your AI assistant. Follow the activities in order.</div>
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Setup</span> Activity 1: Setup (10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Setup</span> Activity 1: Setup</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-0',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-0">We will work on building an application today. For every front end and backend component we will create a project folder. All documents will reside in the aidlc-docs folder. Throughout our session I'll ask you to plan your work ahead and create an md file for the plan. You may work only after I approve said plan. These plans will always be stored in aidlc-docs/plans folder. You will create many types of documents in the md format. Requirement, features changes documents will reside in aidlc-docs/requirements folder. User stories must be stored in the aidlc-docs/story-artifacts folder. Architecture and Design documents must be stored in the aidlc-docs/design-artifacts folder. All prompts in order must be stored in the aidlc-docs/prompts.md file. Confirm your understanding of this prompt. Create the necessary folders and files for storage, if they do not exist already.</pre></div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 1.5: Intent Definition (5 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 1.5: Intent Definition</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-1',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-1">Intent:
 Build a simple personal task manager to help users add tasks and view their task list.
 
@@ -279,13 +280,14 @@ Acknowledge the intent and confirm understanding.</pre></div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: User Stories Creation (30 minutes)</div>
-        <div class="think-box mb-3">💡 User stories are how product teams capture what software should do from the user's perspective — they become the contract that every design and code decision traces back to. For the following prompt, consider how you would describe our target application to a project manager, then fill in the blank before prompting. What things should we consider here?</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: User Stories Creation</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> <strong>What's a user story?</strong> A user story is a short, plain-language description of something a user wants to do, written from their point of view, usually in the form: <em>"As a user, I want to add a task so that I can remember what to do."</em> Each story also lists acceptance criteria (the specific conditions that must be true for it to count as done). Together, these stories become the contract for everything the AI builds next, so it's worth getting them right.</div>
+        <div class="think-box mb-3">💡 For the following prompt, consider how you would describe our target application to a project manager, then fill in the blank before prompting. What things should we consider here?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-2',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-2">Your Role: You are an expert product manager and are tasked with creating well defined user stories that becomes the contract for developing the system as mentioned in the Task section below. Plan for the work ahead and write your steps in an md file (user_stories_plan.md) with checkboxes for each step in the plan. If any step needs my clarification, add a note in the step to get my confirmation. Do not make critical decisions on your own. Upon completing the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Build user stories for the high-level requirement as described here: "<span id="p-2-todo" class="todo-placeholder">✏️ TODO: fill in your application description below</span>" Save the final user stories in aidlc-docs/story-artifacts/mvp_user_stories.md file.</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-2-input">How would you describe the application</label>
+            <label class="form-label fw-bold" for="p-2-input">How would you describe the application? <span class="text-muted fw-normal">(this fills the highlighted blank above)</span></label>
             <textarea id="p-2-input" class="form-control" rows="2" placeholder="Describe the target application here..." oninput="updateTodoPlaceholder('p-2-todo', this.value, '✏️ TODO: fill in your application description below')"></textarea>
         </div>
         <div class="mt-2">
@@ -299,26 +301,42 @@ Your Task: Build user stories for the high-level requirement as described here: 
             </div>
         </div>
         <div class="alert alert-secondary mt-2"><strong>After AI shows the plan, respond:</strong><br><code>Yes, I like your plan as in the user_stories_plan.md. Now exactly follow the same plan. Interact with me as specified in the plan. Once you finish each step, mark the checkboxes in the plan.</code></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the user stories before moving on.</strong> Once the AI has generated them, open <code>aidlc-docs/story-artifacts/mvp_user_stories.md</code> and review what it produced.
+            <br><br>
+            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            <br><br>
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li>Find the story for <strong>deleting a task</strong>. Read its acceptance criteria — what does it say should happen if you try to delete a task that doesn't exist?</li>
+                <li>Compare the list of stories against the client's request (above). Find any feature the client asked for that <em>isn't</em> covered by a story.</li>
+                <li>Pick one acceptance criterion that feels vague and rewrite it in one sentence so an AI couldn't misread it.</li>
+            </ul>
+        </div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: Units Decomposition (20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: Units Decomposition</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-3',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-3">Your Role: You are an experienced software architect. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/units_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to the user stories in aidlc-docs/story-artifacts/mvp_user_stories.md file. Group the user stories into a single cohesive unit called "Task Management Unit" that contains all the user stories. Save this as aidlc-docs/design-artifacts/task_management_unit.md.</pre></div>
         <div class="think-box mt-3">
-            Grouping related stories into units mirrors how real teams divide work — each unit can be built and validated independently, just like a sprint deliverable.<br><br>
-            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/story-artifacts/mvp_user_stories.md</code> and <code>aidlc-docs/design-artifacts/task_management_unit.md</code> and review what the AI produced.
+            Grouping related stories into units mirrors how real teams divide work. Each unit can be built and validated independently, just like a sprint deliverable.<br><br>
+            <strong>📂 Check the unit before approving.</strong> Open <code>aidlc-docs/design-artifacts/task_management_unit.md</code> and compare it against <code>aidlc-docs/story-artifacts/mvp_user_stories.md</code>.
             <br><br>
-            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            This step groups your user stories into a unit that the next step (the component model) builds from. Nothing new should be invented here — every story should carry over intact.
             <br><br>
-            <strong>Ask yourself:</strong> Do the user stories match what the client described? Are the acceptance criteria specific enough that a developer (or AI) could implement them unambiguously, or are there gaps that could lead to the wrong thing being built?
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li>Count the stories in <code>mvp_user_stories.md</code>, then count them in the unit. Find any story that got dropped or merged during grouping.</li>
+                <li>Pick one story and read its wording in both files. Did the AI silently reword or reinterpret it?</li>
+            </ul>
         </div>
         <div class="alert alert-secondary mt-2"><strong>After AI shows the plan, respond:</strong><br><code>I approve. Proceed.</code></div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 4: Domain Model Creation (25 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 4: Domain Model Creation</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-4',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-4">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in an aidlc-docs/design-artifacts/component_model_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to the user stories in the aidlc-docs/design-artifacts/task_management_unit.md file. Design the component model to implement all the user stories. This model shall contain all the components, the attributes, the behaviors and how the components interact to implement the user stories. Do not generate any codes yet. Write the component model into aidlc-docs/design-artifacts/task_component_model.md file.</pre></div>
@@ -328,14 +346,19 @@ Your Task: Refer to the user stories in the aidlc-docs/design-artifacts/task_man
             <br><br>
             The component model defines the building blocks of the system: what classes exist, what data they hold, what they can do, and how they communicate. This is the last checkpoint before the AI starts generating code.
             <br><br>
-            <strong>Ask yourself:</strong> Can you trace each user story to a specific component and its behaviors? Are there any components that seem unnecessary, or any behaviors missing that the stories require?
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li><strong>Pick one component</strong> in the model and identify which user story it's used in. If you can't trace it back to a story, ask the AI why that component exists.</li>
+                <li>Find the component responsible for saving tasks. What does the model say it does when the database is empty?</li>
+                <li>Take the "add a task" story and follow it through the model — list the components a new task passes through from the form to being stored.</li>
+            </ul>
         </div>
         <div class="alert alert-secondary mt-2"><strong>After AI shows the plan, respond:</strong><br><code>I approve the plan. Proceed. After completing each step, mark the checkbox in your plan file.</code></div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Code Generation (35 minutes)</div>
-        <div class="think-box mb-3">💡 AI code generation is most reliable when given a precise specification — all the earlier planning steps exist to produce that specification. Think about one additional feature you'd like the task manager to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Code Generation</div>
+        <div class="think-box mb-3">💡 Think about one additional feature you'd like the task manager to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-5',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-5">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in an aidlc-docs/plans/code_generation_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Task: Refer to component design in the aidlc-docs/design-artifacts/task_component_model.md file. Generate a simple local-first Python Flask implementation for the Task Management Component with these features:
@@ -357,7 +380,7 @@ Generate files under taskManager:
 - requirements.txt
 - tests for service, repository, and API behavior</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-5-input">What feature would you like to add to the task manager?</label>
+            <label class="form-label fw-bold" for="p-5-input">What feature would you like to add to the task manager? <span class="text-muted fw-normal">(this fills the highlighted blank above)</span></label>
             <textarea id="p-5-input" class="form-control" rows="2" placeholder="e.g. Delete tasks from the list" oninput="updateTodoPlaceholder('p-5-todo', this.value, '✏️ TODO: describe your additional feature here')"></textarea>
         </div>
         <div class="mt-2">
@@ -373,40 +396,48 @@ Generate files under taskManager:
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Build APIs (15 minutes)</div>
-        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> If the feature you added in Activity 5 requires a new API endpoint, describe it in the box below so it gets wired up here. If your feature works entirely within the existing routes, you can leave this blank.</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Build APIs</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> <strong>What's an API route?</strong> A route is simply an address your app listens on, paired with an action. When something (your browser, or a tool like <code>curl</code>) asks the app at that address, the app does the matching work and sends a response back. For example, one route shows the task list when you open the page, and another adds a new task when the form is submitted. You don't need to know the technical wording. Just describe the action you want in plain words and let the AI choose the right route.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-6',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-6">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in an md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
-Task: Refer to the task_service.py under the taskManager/ folder. Create Flask routes for:
-- GET / for the HTML task list and form
-- POST /tasks for JSON API task creation
-- GET /tasks for JSON API task listing
-- POST /ui/tasks or a similar form-compatible task creation route if needed
-- GET /health for local health checks
-- <span id="p-6-todo" class="todo-placeholder">✏️ TODO: add a route for your feature if it requires one (optional — remove if not needed)</span>
+Task: Refer to the task_service.py under the taskManager/ folder. Create the Flask routes the app needs so that a user can:
+- Open a page that shows the task list and a form to add a task
+- Add a new task (from both the page form and as a JSON API for curl testing)
+- View all tasks as JSON for curl testing
+- Check that the app is healthy
+- <span id="p-6-todo" class="todo-placeholder">✏️ TODO: describe in plain words anything else you want to be able to do (optional)</span>
 
-Routes must use the SQLite-backed repository through the service layer. Test the browser flow and curl API flow.</pre></div>
+For each capability, decide the appropriate route yourself (method and path) and implement it. Routes must use the SQLite-backed repository through the service layer. Test the browser flow and curl API flow.</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-6-input">Does your feature need a new API route? If so, describe it. <span class="text-muted fw-normal fst-italic">(optional)</span></label>
-            <textarea id="p-6-input" class="form-control" rows="2" placeholder="e.g. DELETE /tasks/&lt;id&gt; to delete a task" oninput="updateTodoPlaceholder('p-6-todo', this.value, '✏️ TODO: add a route for your feature if it requires one (optional — remove if not needed)')"></textarea>
+            <label class="form-label fw-bold" for="p-6-input">In plain words, what else should the app let you do? <span class="text-muted fw-normal fst-italic">(optional; fills the blank above)</span></label>
+            <textarea id="p-6-input" class="form-control" rows="2" placeholder="e.g. I want to remove a task from my list when I'm done with it" oninput="updateTodoPlaceholder('p-6-todo', this.value, '✏️ TODO: describe in plain words anything else you want to be able to do (optional)')"></textarea>
+            <div class="form-text">Describe the action, not the technical route. The AI will figure out and build the route for you.</div>
         </div>
         <div class="mt-2">
             <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-6-example" aria-expanded="false">
-                <i class="bi bi-eye"></i> Example Route
+                <i class="bi bi-eye"></i> Example
             </button>
             <div class="collapse mt-2" id="p-6-example">
                 <div class="card card-body bg-light fst-italic">
-                    "DELETE /tasks/&lt;id&gt; to delete a task"
+                    "I want to remove a task from my list when I'm done with it."
                 </div>
             </div>
         </div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Packaging (15 minutes)</div>
-        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-7',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-7">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in a deployment_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Packaging</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> Pick the version that matches your setup. If you have Docker installed, the packaged version proves the app starts consistently on any machine. If you don't, the no-Docker version produces the same deployment artifacts and runs the app directly with Python.</div>
+        <div class="btn-group mb-3" role="group" aria-label="Docker option">
+            <input type="radio" class="btn-check" name="p7-mode" id="p7-docker-radio" autocomplete="off" checked onchange="togglePackaging('docker')">
+            <label class="btn btn-outline-primary" for="p7-docker-radio"><i class="bi bi-box-seam"></i> I have Docker</label>
+            <input type="radio" class="btn-check" name="p7-mode" id="p7-nodocker-radio" autocomplete="off" onchange="togglePackaging('nodocker')">
+            <label class="btn btn-outline-primary" for="p7-nodocker-radio"><i class="bi bi-terminal"></i> I don't have Docker</label>
+        </div>
+        <div id="p-7-docker-wrap">
+            <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-7-docker',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-7-docker">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in a deployment_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
-Task: Package this local-first Flask + SQLite task manager for the Operations step. Do not require AWS services, AWS credentials, CloudFormation, or any cloud account.
+Task: Package this local-first Flask + SQLite task manager for the Operations step using Docker. Do not require AWS services, AWS credentials, CloudFormation, or any cloud account.
 
 Create:
 - Dockerfile
@@ -423,6 +454,25 @@ Requirements:
 - Include commands for docker compose up --build, docker compose ps, docker compose logs, and docker compose down
 - Validate browser flow and curl API flow
 - Review the validation report and fix all identified issues, then update the validation report</pre></div>
+        </div>
+        <div id="p-7-nodocker-wrap" class="d-none">
+            <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-7-nodocker',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-7-nodocker">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in a deployment_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
+
+Task: Package this local-first Flask + SQLite task manager for the Operations step. I do not have Docker, so do not use Docker, docker-compose, or containers at all. Do not require AWS services, AWS credentials, CloudFormation, or any cloud account.
+
+Create:
+- .env.example
+- DEPLOYMENT/local-deployment-guide.md
+- DEPLOYMENT/validation-report.md
+
+Requirements:
+- App runs on http://localhost:5000, started directly with a Python virtual environment (python -m venv, pip install -r requirements.txt, python app.py)
+- SQLite database persists under ./data/tasks.db
+- Include a health check for /health
+- The deployment guide must include the exact commands to set up the virtual environment, install dependencies, run the app, and stop it, for both macOS/Linux and Windows PowerShell
+- Validate browser flow and curl API flow
+- Review the validation report and fix all identified issues, then update the validation report</pre></div>
+        </div>
     </div>
 
     <div class="mb-4">
@@ -435,28 +485,20 @@ Requirements:
 4. Migrating from SQLite to PostgreSQL or hosted infrastructure later
 
 Please explain how this would work for our specific task manager application.</pre></div>
+        <div class="note-box mt-3"><i class="bi bi-info-circle"></i> <strong>In this workflow, this is the last step.</strong> Keep in mind that the prompt-by-prompt sequence you just followed is <em>one</em> way to use AI agents for programming, not the only way. Other valid approaches include a free-form conversation where you describe what you want and iterate, spec-driven tools that generate from a written specification, or more autonomous workflows that take over larger portions of the work with less step-by-step input from you. The right approach depends on the project, your team, and how much control you want at each step.</div>
     </div>
 
     <div class="vision-section mt-5">
         <h3>Test Your Application</h3>
-        <h5>Run Locally:</h5>
-        <pre class="bg-dark text-light p-3 rounded">cd taskManager
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python app.py
+        <p>Rather than copying fixed commands, ask the AI to generate a test plan for the app <em>it actually built</em> — it knows your real routes, port, and any feature you added. Copy this prompt:</p>
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyPrompt('p-test',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-test">Generate a short manual test plan for the task manager app we just built. Base it on the actual routes, port, and files in the project, not on assumptions. Include two parts:
 
-# Open the browser frontend
-http://localhost:5000
+1. Browser/UI walkthrough: step-by-step actions I can take in the browser to confirm each feature works (for example, adding a task, viewing the list, and any extra feature I added). Tell me which page to open.
 
-# Add a task
-curl -X POST http://localhost:5000/tasks -H "Content-Type: application/json" -d '{"title": "Learn AI-DLC", "description": "Complete the tutorial"}'
+2. curl commands: the exact curl commands to exercise each API route, with example data, and what response I should expect from each one.
 
-# Get all tasks
-curl http://localhost:5000/tasks
-
-# Check application health
-curl http://localhost:5000/health</pre>
+Also include the commands to start the app locally first. Keep it copy-paste ready.</pre></div>
+        <div class="form-text mt-2">Run the steps and commands the AI gives you. If anything fails, paste the error back to the AI and ask it to fix the code, then re-test.</div>
     </div>
 
     <div class="mb-4 mt-5">
@@ -491,11 +533,20 @@ curl http://localhost:5000/health</pre>
             setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-light'); }, 2000);
         });
     }
+    function togglePackaging(mode) {
+        document.getElementById('p-7-docker-wrap').classList.toggle('d-none', mode !== 'docker');
+        document.getElementById('p-7-nodocker-wrap').classList.toggle('d-none', mode !== 'nodocker');
+    }
     function updateTodoPlaceholder(spanId, value, defaultText) {
         const span = document.getElementById(spanId);
         if (!span) return;
-        span.textContent = value.trim() || defaultText;
-        span.classList.toggle('todo-placeholder', !value.trim());
+        const filled = !!value.trim();
+        span.textContent = filled ? value.trim() : defaultText;
+        // Keep the span highlighted either way: dashed/italic while it's still a
+        // blank, solid once the learner has filled it in, so they can always see
+        // exactly what got inserted into the prompt above.
+        span.classList.toggle('todo-placeholder', !filled);
+        span.classList.toggle('todo-filled', filled);
     }
     window.addEventListener('scroll', function() {
         var scrollTop = window.scrollY || document.documentElement.scrollTop;

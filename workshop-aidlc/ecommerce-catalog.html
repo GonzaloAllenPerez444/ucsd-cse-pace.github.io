@@ -26,6 +26,7 @@
         .phase-construction { background: #c8e6c9; color: #2e7d32; }
         .phase-operations { background: #fff59d; color: #f57f17; }
         .todo-placeholder { background: #fff3cd; border: 2px dashed #ffc107; padding: 0 4px; border-radius: 3px; font-style: italic; color: #856404; }
+        .todo-filled { background: #fff3cd; border: 2px solid #ffc107; padding: 0 4px; border-radius: 3px; color: #856404; }
     </style>
 </head>
 <body>
@@ -56,7 +57,7 @@
                     <li>Node.js LTS and npm</li>
                     <li>Python 3.11+, <code>venv</code>, and <code>pip</code></li>
                     <li>Browser for local frontend and API docs validation</li>
-                    <li>Docker Compose for the Operations packaging step</li>
+                    <li>Docker Compose (optional, for the Operations packaging step — a no-Docker path is provided)</li>
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-4-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 4 Setup Instructions</a>
@@ -93,7 +94,7 @@
     <div class="alert alert-warning"><i class="bi bi-exclamation-triangle"></i> AI-DLC Workflow is adaptive. Based on how you answer questions, the complexity of your request, and the AI's assessment, some stages may be skipped, combined, or run at different levels of detail. The workflow tells you what it's doing — follow its lead and approve or request changes at each gate.</div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Start</span> Activity 1: Start the Workflow (10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Start</span> Activity 1: Start the Workflow</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>You kick off the entire workflow with a single prompt describing what you want to build. AI-DLC Workflow takes it from there.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> This one prompt captures the intent — customers browsing and buying, admins managing. The workflow handles the phasing automatically.</div>
@@ -106,7 +107,7 @@
     <div class="phase-divider phase-inception">🔵 INCEPTION PHASE — No code is generated. This phase is about understanding what to build and why.</div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Requirements Analysis (~15 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Requirements Analysis</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI analyzes your request and asks clarifying questions about anything unclear. You'll also see a question about enabling security extension rules.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> What product categories exist? How does search work — by name, category, price range? What does the SQLite-backed cart look like? What can admins do — CRUD products and manage inventory? Product images should be static placeholder URLs, not uploaded files.</div>
@@ -118,7 +119,7 @@
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories (~20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI creates user stories that become the contract for what gets built. It runs in two parts: first it plans how to structure the stories, then it generates them with personas and acceptance criteria.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> You'll get stories for both customer-facing features (browsing, search, SQLite-backed cart) and admin features (product management, inventory without login). The acceptance criteria define the contract for code generation.</div>
@@ -131,7 +132,7 @@
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Workflow Planning + Units (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Workflow Planning + Units</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI determines which Construction stages to run and decomposes the system into multiple units that can be built independently. Units are ordered so everything is built properly.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> Expect units like product catalog/browsing, search, shopping cart, and admin management. The ordering matters — data models and core catalog before cart and admin features.</div>
@@ -145,7 +146,7 @@
     <div class="phase-divider phase-construction">🟢 CONSTRUCTION PHASE</div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Functional Design (~20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Functional Design</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow designs the detailed component model — all components, data models, APIs, and how they interact. No code yet.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> The design will cover React components, FastAPI routes, SQLite tables, repositories, product management, catalog browsing, search, cart, and admin inventory screens. Watch how the AI maps each component back to user stories.</div>
@@ -154,7 +155,7 @@
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Code Generation (~60 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Code Generation</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The main build activity. AI-DLC Workflow's Construction phase has a built-in per-unit loop — for each unit of work, it runs design and code generation stages in sequence, completing each unit fully before moving to the next. The approval gate after each unit says "Continue to next unit" or "Proceed to Build &amp; Test." This is less explicit than a manual tracker (like the one in the Copy-Paste Prompts tab), but the workflow handles the cycling automatically.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> The AI will implement each unit across backend, frontend, and database as needed. Watch how it ensures previously implemented units still work as new ones are added. After all units, it runs comprehensive local tests.</div>
@@ -167,7 +168,7 @@
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Full-Stack Packaging (~20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Full-Stack Packaging</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI packages the local full-stack application for repeatable Operations use. This covers:</p>
             <ul>
@@ -183,7 +184,7 @@
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Build and Test (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Build and Test</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow generates build and test instructions. Verify the local application works end-to-end.</p>
             <div class="note-box">The exact directory names, file names, and scripts may vary. Check the build instructions for the exact values.</div>
@@ -203,7 +204,7 @@ npm run preview -- --host 0.0.0.0</pre>
     <div class="phase-divider phase-operations">🟡 OPERATIONS PHASE</div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Discussion (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Discussion</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow's Operations phase is a placeholder for future expansion. This is a group discussion.</p>
             <div class="think-box">💡 <strong>Think about your product catalog:</strong> How would you back up SQLite data, reset seed data, inspect container logs, migrate to PostgreSQL later, or replace placeholder image URLs with real hosted images?</div>
@@ -235,13 +236,13 @@ Please explain how this would work for our specific application.</pre></div>
     <div class="alert alert-secondary"><i class="bi bi-clipboard"></i> Copy and paste each prompt into your AI assistant. Follow the activities in order.</div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Setup</span> Activity 1: Setup (10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Setup</span> Activity 1: Setup</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-0',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-0">We will work on building an application today. For every front end and backend component we will create a project folder. All documents will reside in the aidlc-docs folder. Throughout our session I'll ask you to plan your work ahead and create an md file for the plan. You may work only after I approve said plan. These plans will always be stored in aidlc-docs/plans folder. You will create many types of documents in the md format. Requirement, features changes documents will reside in aidlc-docs/requirements folder. User stories must be stored in the aidlc-docs/story-artifacts folder. Architecture and Design documents must be stored in the aidlc-docs/design-artifacts folder. All prompts in order must be stored in the aidlc-docs/prompts.md file. Confirm your understanding of this prompt. Create the necessary folders and files for storage, if they do not exist already.</pre></div>
     </div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Intent Definition (5 minutes)</div>
-        <div class="think-box mb-3">💡 Stating intent before writing code keeps scope bounded — for a catalog, this prevents the AI from adding checkout or payment features that aren't needed yet. For the following prompt, consider how you would describe the client's online store in your own words, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
+        <div class="think-box mb-3">💡 Stating intent before writing code keeps scope bounded. For a catalog, this prevents the AI from adding checkout or payment features that aren't needed yet. For the following prompt, consider how you would describe the client's online store in your own words, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-1',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-1">Intent:
 <span id="p-1-todo" class="todo-placeholder">✏️ TODO: fill in your application description below</span>
 Use React, Vite, FastAPI, SQLite, and Docker Compose for Operations packaging. Persist products, inventory, and cart data in SQLite. Admin management has no login. Product images use static placeholder image URLs.
@@ -249,7 +250,7 @@ Use React, Vite, FastAPI, SQLite, and Docker Compose for Operations packaging. P
 Do not propose solutions yet.
 Acknowledge the intent and confirm understanding.</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-1-input">How would you describe the application?</label>
+            <label class="form-label fw-bold" for="p-1-input">How would you describe the application? <span class="text-muted fw-normal">(this fills the highlighted blank above)</span></label>
             <textarea id="p-1-input" class="form-control" rows="2" placeholder="Describe the target application here..." oninput="updateTodoPlaceholder('p-1-todo', this.value, '✏️ TODO: fill in your application description below')"></textarea>
         </div>
         <div class="mt-2">
@@ -267,7 +268,7 @@ Acknowledge the intent and confirm understanding.</pre></div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories Creation (20 minutes)</div>
-        <div class="think-box mb-3">💡 E-commerce systems serve two audiences — customers and admins — writing separate stories for each prevents features from being conflated or accidentally omitted. Think about one additional feature you'd like the store to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
+        <div class="think-box mb-3">💡 E-commerce systems serve two audiences: customers and admins. Writing separate stories for each prevents features from being conflated or accidentally omitted. Think about one additional feature you'd like the store to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-2',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-2">Your Role: You are an expert product manager with e-commerce domain expertise. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/user_stories_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Build comprehensive user stories for the product catalog system based on the intent. Include customer-facing features (browsing, search, cart) and admin features (product management, inventory).
@@ -275,7 +276,7 @@ Also include this additional feature: <span id="p-2-todo" class="todo-placeholde
 
 Write the user stories to aidlc-docs/story-artifacts/user_stories.md</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-2-input">What feature would you like to add to the store?</label>
+            <label class="form-label fw-bold" for="p-2-input">What feature would you like to add to the store? <span class="text-muted fw-normal">(this fills the highlighted blank above)</span></label>
             <textarea id="p-2-input" class="form-control" rows="2" placeholder="e.g. Let customers filter products by category" oninput="updateTodoPlaceholder('p-2-todo', this.value, '✏️ TODO: describe your additional feature here')"></textarea>
         </div>
         <div class="mt-2">
@@ -289,49 +290,72 @@ Write the user stories to aidlc-docs/story-artifacts/user_stories.md</pre></div>
             </div>
         </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review the plan, provide feedback, then respond: <code>I reviewed the plan. Please proceed with the approved approach.</code></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the user stories before moving on.</strong> Once the AI has generated them, open <code>aidlc-docs/story-artifacts/user_stories.md</code> and review what it produced.
+            <br><br>
+            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            <br><br>
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li>Find the story for <strong>adding a product to the cart</strong>. Read its acceptance criteria — what does it say should happen if the item is out of stock?</li>
+                <li>Compare the stories against the client's request (browse, search, view details, cart, plus admin product management and inventory) <em>and</em> the extra feature you added. Find anything that <em>isn't</em> covered by a story.</li>
+                <li>Pick one acceptance criterion that feels vague and rewrite it in one sentence so an AI couldn't misread it.</li>
+            </ul>
+        </div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Units Definition (15 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Units Definition</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-3',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-3">Your Role: You are an experienced software architect. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/units_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Group the user stories in aidlc-docs/story-artifacts/user_stories.md into multiple units that can be built independently. Each unit contains highly cohesive user stories that can be built by a single team. The units are loosely coupled with each other. For each unit, write the respective user stories and acceptance criteria.
 
 Write the units to aidlc-docs/story-artifacts/units.md</pre></div>
         <div class="think-box mt-3">
-            Grouping customer-facing and admin features into separate units mirrors real product team structure — each unit can be built and tested independently, reducing coordination overhead.<br><br>
-            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/story-artifacts/user_stories.md</code> and <code>aidlc-docs/story-artifacts/units.md</code> and review what the AI produced.
+            Grouping customer-facing and admin features into separate units mirrors real product team structure — each unit can be built and tested independently, reducing coordination overhead.<br><br>  
+            <strong>📂 Check the units before approving.</strong> Open <code>aidlc-docs/story-artifacts/units.md</code> and compare it against <code>aidlc-docs/story-artifacts/user_stories.md</code>.
             <br><br>
-            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            This step groups your user stories into units that the next steps build from. Nothing new should be invented here — every story should carry over intact, and the units should be ordered so they can be built one after another.
             <br><br>
-            <strong>Ask yourself:</strong> Do the user stories match what the client described, including the extra feature you added? Is the customer-facing vs. admin split clear in the units, and could one team build each unit without stepping on another?
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li>Count the stories in <code>user_stories.md</code>, then count them across the units. Find any story that got dropped or silently merged during grouping.</li>
+                <li>Confirm the customer-facing units (browsing, search, cart) and the admin units (product management, inventory) are cleanly separated, not tangled together.</li>
+                <li>Read the suggested build order. Confirm the product/data-model and catalog units come before the cart and admin units that depend on them.</li>
+            </ul>
         </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review and approve the plan.</div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Domain Model Creation (20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Domain Model Creation</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> <strong>What are SQLite and seed data?</strong> <em>SQLite</em> is a small database kept in a single file on your own machine, so products, inventory, and cart contents survive a restart without running a separate database server. <em>Seed data</em> is sample content shipped with the app — here, a starter set of products — so the catalog isn't empty the first time you open it. The model below decides what tables hold this data and how the app reads and writes them.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-4',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-4">Your Role: You are an experienced software architect and engineer. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/domain_model_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Design the domain model to implement all the user stories. This model shall contain all the React components, FastAPI routes, SQLite data models, repositories, APIs, and how the components interact to implement the user stories. The components should be at a business level, do not generate any code yet.
 
 Write the domain model into aidlc-docs/design-artifacts/domain_model.md</pre></div>
         <div class="think-box mt-3">
-            A domain model maps user stories to React components, FastAPI routes, and SQLite tables — it makes database schema and API design visible before any code is written.<br><br>
-            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/design-artifacts/domain_model.md</code> and review the domain model the AI designed — no code has been written yet, only structure.
+            A domain model maps user stories to React components, FastAPI routes, and SQLite tables — it makes database schema and API design visible before any code is written.<br><br>  
+            <strong>📂 Check the domain model before approving.</strong> Open <code>aidlc-docs/design-artifacts/domain_model.md</code> and review the domain model the AI designed — no code has been written yet, only structure.
             <br><br>
             The domain model defines the building blocks of the system: the React components, FastAPI routes, SQLite models, and how they interact. This is the last checkpoint before the AI starts generating code.
             <br><br>
-            <strong>Ask yourself:</strong> Can you trace each user story to specific components, routes, and data models? Is there a clear home for product, inventory, and cart persistence, or any behavior the stories require that has no place to live?
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li><strong>Pick one user story</strong> and trace it to specific React components, FastAPI routes, and SQLite models. If any part has no home, ask the AI where it lives.</li>
+                <li>Find where product, inventory, and cart data are persisted. Check that the cart has its own clear place to live, not just bolted onto the product model.</li>
+                <li>Follow the "add to cart" story through the model — list the path from the React component to the FastAPI route to the SQLite model that stores it.</li>
+            </ul>
         </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review the domain model and provide feedback.</div>
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Build Units Incrementally (60 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Build Units Incrementally</div>
         <div class="alert alert-primary"><i class="bi bi-info-circle"></i> <strong>Incremental Development:</strong> Build one unit at a time, test, validate, then move to the next.</div>
 
-        <h5 class="mt-3">Step 6.1: Create Implementation Tracker (5 minutes)</h5>
+        <h5 class="mt-3">Step 6.1: Create Implementation Tracker</h5>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-5',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-5">Your Role: You are an experienced software engineer.
 
 Your Task: 
@@ -354,7 +378,7 @@ Total Units: X
 
 Show me the tracker file.</pre></div>
 
-        <h5 class="mt-4">Step 6.2: Implement Each Unit (50 minutes)</h5>
+        <h5 class="mt-4">Step 6.2: Implement Each Unit</h5>
         <div class="alert alert-info"><strong>Repeat for each unchecked unit in the tracker:</strong></div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-6',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-6">Your Task: Look at aidlc-docs/plans/unit_implementation_tracker.md and implement the next unchecked unit.
 
@@ -378,7 +402,7 @@ Show me:
 Fix any issues before proceeding to the next unit.</pre></div>
         <div class="alert alert-success mt-2"><strong>Repeat:</strong> Continue implementing units one by one until all units in the tracker are checked off.</div>
 
-        <h5 class="mt-4">Step 6.3: Final Integration Testing (5 minutes)</h5>
+        <h5 class="mt-4">Step 6.3: Final Integration Testing</h5>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-7',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-7">Your Task: All units in aidlc-docs/plans/unit_implementation_tracker.md should now be checked off. Run comprehensive end-to-end tests.
 
 Test:
@@ -391,8 +415,16 @@ Show me complete test results and the final tracker with all units checked.</pre
     </div>
 
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Full-Stack Packaging (20 minutes)</div>
-        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-8',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-8">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/deployment_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Full-Stack Packaging</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> Pick the version that matches your setup. If you have Docker installed, the packaged version proves the full stack starts consistently on any machine. If you don't, the no-Docker version produces the same deployment artifacts and runs the backend and frontend directly.</div>
+        <div class="btn-group mb-3" role="group" aria-label="Docker option">
+            <input type="radio" class="btn-check" name="p8-mode" id="p8-docker-radio" autocomplete="off" checked onchange="togglePackaging('docker')">
+            <label class="btn btn-outline-primary" for="p8-docker-radio"><i class="bi bi-box-seam"></i> I have Docker</label>
+            <input type="radio" class="btn-check" name="p8-mode" id="p8-nodocker-radio" autocomplete="off" onchange="togglePackaging('nodocker')">
+            <label class="btn btn-outline-primary" for="p8-nodocker-radio"><i class="bi bi-terminal"></i> I don't have Docker</label>
+        </div>
+        <div id="p-8-docker-wrap">
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-8-docker',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-8-docker">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/deployment_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Package the local-first React + FastAPI + SQLite product catalog for the Operations step. Do not require AWS services, AWS credentials, CloudFormation, or any cloud account.
 
@@ -412,7 +444,40 @@ Requirements:
 - Include commands for docker compose up --build, docker compose ps, docker compose logs, and docker compose down
 - Validate customer browse/search/detail/cart flows and admin product/inventory flows
 - Review the validation report and fix all identified issues, then update the validation report</pre></div>
+        </div>
+        <div id="p-8-nodocker-wrap" class="d-none">
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-8-nodocker',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-8-nodocker">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/deployment_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
+
+Your Task: Package the local-first React + FastAPI + SQLite product catalog for the Operations step. I do not have Docker, so do not use Docker, docker-compose, or containers at all. Do not require AWS services, AWS credentials, CloudFormation, or any cloud account.
+
+Create:
+- .env.example
+- persistent SQLite storage under ./data/catalog.db
+- DEPLOYMENT/local-deployment-guide.md
+- DEPLOYMENT/validation-report.md
+
+Requirements:
+- Run the backend directly with a Python virtual environment (python -m venv, pip install -r requirements.txt) and uvicorn on http://localhost:8000, with API docs at http://localhost:8000/docs
+- Build and serve the frontend without Docker using npm install, npm run build, and npm run preview on http://localhost:4173
+- Product, inventory, and cart data persist in SQLite under ./data/catalog.db
+- The deployment guide must include the exact commands to set up, run, and stop both the backend and frontend, for both macOS/Linux and Windows PowerShell
+- Validate customer browse/search/detail/cart flows and admin product/inventory flows
+- Review the validation report and fix all identified issues, then update the validation report</pre></div>
+        </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review local packaging and test the running application.</div>
+    </div>
+
+    <div class="mb-4">
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Phase Discussion</div>
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-9',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-9">Now that we've built and packaged our product catalog, let's discuss the Operations Phase. Based on what we've created, how would AI help with:
+
+1. Backing up and restoring the SQLite product catalog
+2. Resetting seed data safely during local development
+3. Adding analytics for popular products
+4. Migrating from SQLite to PostgreSQL or hosted infrastructure later
+
+Please explain how this would work for our specific application.</pre></div>
+        <div class="note-box mt-3"><i class="bi bi-info-circle"></i> <strong>In this workflow, this is the last step.</strong> Keep in mind that the prompt-by-prompt sequence you just followed is <em>one</em> way to use AI agents for programming, not the only way. Other valid approaches include a free-form conversation where you describe what you want and iterate, spec-driven tools that generate from a written specification, or more autonomous workflows that take over larger portions of the work with less step-by-step input from you. The right approach depends on the project, your team, and how much control you want at each step.</div>
     </div>
 
     <div class="mb-4 mt-5">
@@ -466,11 +531,20 @@ Requirements:
             setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-light'); }, 2000);
         });
     }
+    function togglePackaging(mode) {
+        document.getElementById('p-8-docker-wrap').classList.toggle('d-none', mode !== 'docker');
+        document.getElementById('p-8-nodocker-wrap').classList.toggle('d-none', mode !== 'nodocker');
+    }
     function updateTodoPlaceholder(spanId, value, defaultText) {
         const span = document.getElementById(spanId);
         if (!span) return;
-        span.textContent = value.trim() || defaultText;
-        span.classList.toggle('todo-placeholder', !value.trim());
+        const filled = !!value.trim();
+        span.textContent = filled ? value.trim() : defaultText;
+        // Keep the span highlighted either way: dashed/italic while it's still a
+        // blank, solid once the learner has filled it in, so they can always see
+        // exactly what got inserted into the prompt above.
+        span.classList.toggle('todo-placeholder', !filled);
+        span.classList.toggle('todo-filled', filled);
     }
     window.addEventListener('scroll', function() {
         var scrollTop = window.scrollY || document.documentElement.scrollTop;
