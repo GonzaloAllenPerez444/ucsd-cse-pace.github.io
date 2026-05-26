@@ -25,6 +25,7 @@
         .phase-inception { background: #bbdefb; color: #1565c0; }
         .phase-construction { background: #c8e6c9; color: #2e7d32; }
         .phase-operations { background: #fff59d; color: #f57f17; }
+        .todo-placeholder { background: #fff3cd; border: 2px dashed #ffc107; padding: 0 4px; border-radius: 3px; font-style: italic; color: #856404; }
     </style>
 </head>
 <body>
@@ -58,6 +59,10 @@
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-4-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 4 Setup Instructions</a>
+                <p></p>
+                <h3>Task Overview</h3>
+                <p>We have just been hired by a new client to build the online store they keep talking about. They know retail, not software, so the details are fuzzy. Here is what they have told us so far:</p>
+                <p>“We want a little online shop where customers can look through everything we sell, search for what they want, and open a product to see the details before dropping it into a cart. On our side, we need to be able to add and update the products and keep an eye on what's in stock. That's the gist of what we need for now.”</p>
             </div>
             <h3 class="mt-5 mb-3">Workshop Activities</h3>
             <ul class="nav nav-tabs method-tabs" role="tablist">
@@ -219,22 +224,53 @@ Please explain how this would work for our specific application.</pre></div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Intent Definition (5 minutes)</div>
+        <div class="think-box mb-3">💡 For the following prompt, consider how you would describe the client's online store in your own words, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-1',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-1">Intent:
-Build a product catalog system where customers can browse products, search, view details, and add items to cart. Admins can manage products and inventory.
+<span id="p-1-todo" class="todo-placeholder">✏️ TODO: fill in your application description below</span>
 Use React, Vite, FastAPI, SQLite, and Docker Compose for Operations packaging. Persist products, inventory, and cart data in SQLite. Admin management has no login. Product images use static placeholder image URLs.
 
 Do not propose solutions yet.
 Acknowledge the intent and confirm understanding.</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-1-input">How would you describe the application?</label>
+            <textarea id="p-1-input" class="form-control" rows="2" placeholder="Describe the target application here..." oninput="updateTodoPlaceholder('p-1-todo', this.value, '✏️ TODO: fill in your application description below')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-1-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Prompt
+            </button>
+            <div class="collapse mt-2" id="p-1-example">
+                <div class="card card-body bg-light fst-italic">
+                    "Build a product catalog system where customers can browse products, search, view details, and add items to cart. Admins can manage products and inventory."
+                </div>
+            </div>
+        </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Answer any clarifying questions.</div>
     </div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories Creation (20 minutes)</div>
+        <div class="think-box mb-3">💡 Think about one additional feature you'd like the store to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-2',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-2">Your Role: You are an expert product manager with e-commerce domain expertise. Before you start the task as mentioned below, please do the planning and write your steps in the aidlc-docs/plans/user_stories_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Build comprehensive user stories for the product catalog system based on the intent. Include customer-facing features (browsing, search, cart) and admin features (product management, inventory).
+Also include this additional feature: <span id="p-2-todo" class="todo-placeholder">✏️ TODO: describe your additional feature here</span>
 
 Write the user stories to aidlc-docs/story-artifacts/user_stories.md</pre></div>
+        <div class="mt-3">
+            <label class="form-label fw-bold" for="p-2-input">What feature would you like to add to the store?</label>
+            <textarea id="p-2-input" class="form-control" rows="2" placeholder="e.g. Let customers filter products by category" oninput="updateTodoPlaceholder('p-2-todo', this.value, '✏️ TODO: describe your additional feature here')"></textarea>
+        </div>
+        <div class="mt-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#p-2-example" aria-expanded="false">
+                <i class="bi bi-eye"></i> Example Feature
+            </button>
+            <div class="collapse mt-2" id="p-2-example">
+                <div class="card card-body bg-light fst-italic">
+                    "Let customers filter products by category"
+                </div>
+            </div>
+        </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review the plan, provide feedback, then respond: <code>I reviewed the plan. Please proceed with the approved approach.</code></div>
     </div>
 
@@ -245,6 +281,13 @@ Write the user stories to aidlc-docs/story-artifacts/user_stories.md</pre></div>
 Your Task: Group the user stories in aidlc-docs/story-artifacts/user_stories.md into multiple units that can be built independently. Each unit contains highly cohesive user stories that can be built by a single team. The units are loosely coupled with each other. For each unit, write the respective user stories and acceptance criteria.
 
 Write the units to aidlc-docs/story-artifacts/units.md</pre></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/story-artifacts/user_stories.md</code> and <code>aidlc-docs/story-artifacts/units.md</code> and review what the AI produced.
+            <br><br>
+            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            <br><br>
+            <strong>Ask yourself:</strong> Do the user stories match what the client described, including the extra feature you added? Is the customer-facing vs. admin split clear in the units, and could one team build each unit without stepping on another?
+        </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review and approve the plan.</div>
     </div>
 
@@ -255,6 +298,13 @@ Write the units to aidlc-docs/story-artifacts/units.md</pre></div>
 Your Task: Design the domain model to implement all the user stories. This model shall contain all the React components, FastAPI routes, SQLite data models, repositories, APIs, and how the components interact to implement the user stories. The components should be at a business level, do not generate any code yet.
 
 Write the domain model into aidlc-docs/design-artifacts/domain_model.md</pre></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the artifacts before approving.</strong> Open <code>aidlc-docs/design-artifacts/domain_model.md</code> and review the domain model the AI designed — no code has been written yet, only structure.
+            <br><br>
+            The domain model defines the building blocks of the system: the React components, FastAPI routes, SQLite models, and how they interact. This is the last checkpoint before the AI starts generating code.
+            <br><br>
+            <strong>Ask yourself:</strong> Can you trace each user story to specific components, routes, and data models? Is there a clear home for product, inventory, and cart persistence, or any behavior the stories require that has no place to live?
+        </div>
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review the domain model and provide feedback.</div>
     </div>
 
@@ -346,6 +396,16 @@ Requirements:
         <div class="alert alert-warning mt-2"><strong>Follow-up:</strong> Review local packaging and test the running application.</div>
     </div>
 
+    <div class="mb-4 mt-5">
+        <div class="prompt-title"><span class="step-badge" style="background:#6f42c1;">Bonus</span> Bonus: Compare Implementations</div>
+        <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
+            <p>Earlier, one of our engineers followed the exact same steps you just did and created this prototype. In what ways are the two apps similar and different? Where could the differences have crept in?</p>
+            <div class="text-center mt-3">
+                <img src="../images/aidlc_workshop4_example.png" alt="Example product catalog prototype built by an engineer following the AI-DLC workshop steps" class="img-fluid rounded border" style="max-width:100%;">
+            </div>
+        </div>
+    </div>
+
     <!-- Expected Outcomes -->
     <div class="mt-5">
         <h3>Expected Outcomes</h3>
@@ -386,6 +446,12 @@ Requirements:
             btn.classList.add('btn-success'); btn.classList.remove('btn-light');
             setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-light'); }, 2000);
         });
+    }
+    function updateTodoPlaceholder(spanId, value, defaultText) {
+        const span = document.getElementById(spanId);
+        if (!span) return;
+        span.textContent = value.trim() || defaultText;
+        span.classList.toggle('todo-placeholder', !value.trim());
     }
     </script>
 </body>
