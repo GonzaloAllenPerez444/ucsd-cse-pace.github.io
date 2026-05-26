@@ -26,6 +26,7 @@
         .phase-construction { background: #c8e6c9; color: #2e7d32; }
         .phase-operations { background: #fff59d; color: #f57f17; }
         .todo-placeholder { background: #fff3cd; border: 2px dashed #ffc107; padding: 0 4px; border-radius: 3px; font-style: italic; color: #856404; }
+        .todo-filled { background: #fff3cd; border: 2px solid #ffc107; padding: 0 4px; border-radius: 3px; color: #856404; }
     </style>
 </head>
 <body>
@@ -54,7 +55,7 @@
                     <li>Access to an AI assistant (Kiro, Claude, Cursor, etc.)</li>
                     <li>Node.js LTS and npm installed</li>
                     <li>Browser for local preview and <code>localStorage</code> testing</li>
-                    <li>Docker Compose for the Operations packaging step</li>
+                    <li>Docker Compose (optional, for the Operations packaging step — a no-Docker path is provided)</li>
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-2-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 2 Setup Instructions</a>
@@ -75,7 +76,7 @@
 
     <!-- Activity 1 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Start</span> Activity 1: Start the Workflow (10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Start</span> Activity 1: Start the Workflow</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>You kick off the entire workflow with a single prompt describing what you want to build. AI-DLC Workflow takes it from there — it detects your workspace, sets up tracking, and starts guiding you through the phases.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> This one prompt captures the intent — what to build and for whom. The tech details come later during Construction and Operations. The workflow handles the phasing automatically.</div>
@@ -89,7 +90,7 @@
 
     <!-- Activity 2 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Requirements Analysis (~15 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 2: Requirements Analysis</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI analyzes your request and asks clarifying questions about anything unclear. You'll also see a question about enabling security extension rules.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> What fields should a job posting have — title, company, location, salary range? What does "apply" mean in a frontend-only prototype? Use a local form submission persisted to <code>localStorage</code>. Should search be full-text or filter-based?</div>
@@ -102,7 +103,7 @@
 
     <!-- Activity 3 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories (~20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 3: User Stories</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI creates user stories that become the contract for what gets built. It runs in two parts: first it plans how to structure the stories (and asks you about organization style and detail level), then it generates the actual stories with personas and acceptance criteria.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> You'll get stories around searching jobs, viewing job details, and applying to a job. There is no login in this simplified workshop. Notice how the acceptance criteria cover both happy paths and error scenarios — these become the contract that code generation follows later.</div>
@@ -116,7 +117,7 @@
 
     <!-- Activity 4 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Workflow Planning (~5 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Inception</span> Activity 4: Workflow Planning</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI looks at everything gathered so far and decides which Construction stages to run. It generates an execution plan with a visual diagram showing what's completed, what will execute, and what's being skipped.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> Make sure Local Packaging is included if you want Docker Compose packaging during the Operations step. The main build remains a frontend-only React/Vite app.</div>
@@ -132,7 +133,7 @@
 
     <!-- Activity 5 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Functional Design (~20 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 5: Functional Design</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow designs the detailed component model — data models, business logic, component interactions, and how they implement the user stories. No code yet.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> The design will cover components like job listing, job detail view, search and filters, and the application form. Watch how the AI maps each component back to user stories without adding login or backend services.</div>
@@ -143,7 +144,7 @@
 
     <!-- Activity 6 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Code Generation (~45 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Activity 6: Code Generation</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>This is the main build activity. The AI creates a plan for what code to generate, gets your approval, then executes it step by step — checking off each item as it goes. Code goes in the workspace root, documentation goes in <code>aidlc-docs/</code>.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> The plan should cover the React Vite app in a <code>job-app</code> folder, with Bootstrap CDN styling (creative color theme, not default blue), 50+ seeded jobs, search/filter/sort, job detail view, application form, submitted applications stored in <code>localStorage</code>, and responsive layout with hover effects. No login or backend services should be added.</div>
@@ -158,7 +159,7 @@
 
     <!-- Activity 7 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Static Packaging (~30 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 7: Local Static Packaging</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>The AI packages the frontend-only React/Vite app for repeatable local Operations use. This covers:</p>
             <ul>
@@ -175,7 +176,7 @@
 
     <!-- Build and Test -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Construction</span> Build and Test (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Construction</span> Build and Test</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow generates build and test instructions covering how to build, preview, and verify the application.</p>
             <div class="note-box mb-2">The exact directory names and scripts may vary. Check the build instructions for the exact commands for your generated project.</div>
@@ -194,7 +195,7 @@ npm run preview -- --host 0.0.0.0</pre>
 
     <!-- Activity 8 -->
     <div class="mb-4">
-        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Discussion (~10 minutes)</div>
+        <div class="prompt-title"><span class="step-badge">Operations</span> Activity 8: Operations Discussion</div>
         <div class="vision-section" style="border-radius:0 0 8px 8px;margin-top:0">
             <p>AI-DLC Workflow's Operations phase is a placeholder for future expansion. This is a group discussion about what comes after building.</p>
             <div class="think-box">💡 <strong>Think about your job application site:</strong> How would you handle static build updates, Nginx logs, localStorage export/reset, browser storage limits, and migration from localStorage to an API/database later?</div>
@@ -232,6 +233,7 @@ Please explain how this would work for our specific application.</pre></div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Step 1: Intent to User Stories</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> <strong>What's a user story?</strong> A user story is a short, plain-language description of something a user wants to do, written from their point of view, usually in the form: <em>"As a user, I want to apply to a job so that I can be considered for it."</em> Each story also lists acceptance criteria (the specific conditions that must be true for it to count as done). Together, these stories become the contract for everything the AI builds next, so it's worth getting them right.</div>
         <div class="think-box mb-3">💡 For the following prompt, consider how you would describe the client's job board to a product manager, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-1',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-1">Your Role: You are an expert product manager and are tasked with creating well defined user stories that becomes the contract for developing the system as mentioned in the Task section below. Plan for the work ahead and write your steps in a Markdown file: user_stories_plan.md with checkboxes for each step in the plan. List your Deliverables in the plan. If any step needs my clarification, add a note in the step to get my confirmation. Do not make critical decisions on your own. Upon completing the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
@@ -239,7 +241,7 @@ Your Task: Build user stories for the high level requirement as described here: 
 
 Write the user stores to a user_stories.md file</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-1-input">How would you describe the application?</label>
+            <label class="form-label fw-bold" for="p-1-input">How would you describe the application? <span class="text-muted fw-normal">(this fills the highlighted blank above)</span></label>
             <textarea id="p-1-input" class="form-control" rows="2" placeholder="Describe the target application here..." oninput="updateTodoPlaceholder('p-1-todo', this.value, '✏️ TODO: fill in your application description below')"></textarea>
         </div>
         <div class="mt-2">
@@ -253,6 +255,18 @@ Write the user stores to a user_stories.md file</pre></div>
             </div>
         </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing user_stories_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
+        <div class="think-box mt-3">
+            <strong>📂 Check the user stories before moving on.</strong> Once the AI has generated them, open <code>user_stories.md</code> and review what it produced.
+            <br><br>
+            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            <br><br>
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li>Find the story for <strong>applying to a job</strong>. Read its acceptance criteria — what does it say should happen if the applicant leaves a required field blank?</li>
+                <li>Compare the list of stories against the client's request (above). Find any feature the client asked for — searching, narrowing results, or saving postings to revisit — that <em>isn't</em> covered by a story.</li>
+                <li>Pick one acceptance criterion that feels vague and rewrite it in one sentence so an AI couldn't misread it.</li>
+            </ul>
+        </div>
     </div>
 
     <div class="mb-4">
@@ -261,11 +275,16 @@ Write the user stores to a user_stories.md file</pre></div>
 
 Your Task: Group these user stories in user_stories.md into multiple units that can be built independently. Each unit contains highly cohesive user stories that can be built by a single team. The units are loosely coupled with each other. For each unit, write the respective user stories and acceptance criteria in a units.md file.</pre></div>
         <div class="think-box mt-3">
-            <strong>📂 Check the artifacts before approving.</strong> Open <code>user_stories.md</code> and <code>units.md</code> and review what the AI produced.
+            <strong>📂 Check the unit before approving.</strong> Open <code>units.md</code> and compare it against <code>user_stories.md</code>.
             <br><br>
-            User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
+            This step groups your user stories into units that the next step (the component model) builds from. Nothing new should be invented here — every story should carry over intact, and the split should let one team build each unit without stepping on another.
             <br><br>
-            <strong>Ask yourself:</strong> Do the user stories match what the client described? Did searching, filtering, and saving postings make it in, or did anything get dropped? Are the units split so that one team could build each one without stepping on another?
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li>Count the stories in <code>user_stories.md</code>, then count them across the units. Find any story that got dropped or silently merged during grouping.</li>
+                <li>Pick one story and read its wording in both files. Did the AI reword or reinterpret it?</li>
+                <li>Pick two units and check they could be built by separate teams — if a single feature is split across both, note where they would have to coordinate.</li>
+            </ul>
         </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing units_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
@@ -276,17 +295,23 @@ Your Task: Group these user stories in user_stories.md into multiple units that 
 
 Your Task: Refer to the user stories in the units.md file. Design the component model to implement all the user stories. This model shall contain all the components, the attributes, the behaviors and how the components interact to implement the user stories. The components should be at a business level, do not generate any codes yet. Write the component model into a Markdown file: component_model.md.</pre></div>
         <div class="think-box mt-3">
-            <strong>📂 Check the artifacts before approving.</strong> Open <code>component_model.md</code> and review the component model the AI designed — no code has been written yet, only structure.
+            <strong>📂 Check the component model before approving.</strong> Open <code>component_model.md</code> and review the component model the AI designed — no code has been written yet, only structure.
             <br><br>
             The component model defines the building blocks of the site: what components exist, what data they hold, what they can do, and how they communicate. This is the last checkpoint before the AI starts generating code.
             <br><br>
-            <strong>Ask yourself:</strong> Can you trace each user story to a specific component and its behaviors? Is there a clear place where saved/bookmarked postings and the localStorage persistence live, or any behavior the stories require that has no home?
+            <strong>Try this:</strong>
+            <ul class="mb-0">
+                <li><strong>Pick one component</strong> in the model and identify which user story it's used in. If you can't trace it back to a story, ask the AI why that component exists.</li>
+                <li>Find the component responsible for saving submitted applications (and any saved/bookmarked postings) to <code>localStorage</code>. What does the model say it does the first time, before anything is stored?</li>
+                <li>Take the "apply to a job" story and follow it through the model — list the components an application passes through, from the form to being stored in <code>localStorage</code>.</li>
+            </ul>
         </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing component_model_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
     </div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Construction</span> Step 4: Code Generation</div>
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> <strong>What are seeded data and localStorage?</strong> <em>Seeded data</em> is sample content you ship with the app so it isn't empty on first run — here, a set of made-up job postings to browse. <em>localStorage</em> is a small storage area built into your browser that keeps data on your own machine, so an application you submit is still there after you refresh or reopen the page, with no server or database involved.</div>
         <div class="think-box mb-3">💡 Think about one additional feature you'd like the job board to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-4',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-4">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in the markdown file react_app_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
@@ -302,7 +327,7 @@ Additional feature: <span id="p-4-todo" class="todo-placeholder">✏️ TODO: de
 Build the React application and attempt to resolve any errors. Install any tools you need.
 Use npm install and npm run build. If tests are generated, run them. Use Vite preview only for local verification.</pre></div>
         <div class="mt-3">
-            <label class="form-label fw-bold" for="p-4-input">What feature would you like to add to the job board?</label>
+            <label class="form-label fw-bold" for="p-4-input">What feature would you like to add to the job board? <span class="text-muted fw-normal">(this fills the highlighted blank above)</span></label>
             <textarea id="p-4-input" class="form-control" rows="2" placeholder="e.g. Save jobs to a bookmarks list" oninput="updateTodoPlaceholder('p-4-todo', this.value, '✏️ TODO: describe your additional feature here')"></textarea>
         </div>
         <div class="mt-2">
@@ -320,7 +345,15 @@ Use npm install and npm run build. If tests are generated, run them. Use Vite pr
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Operations</span> Step 5: Local Static Packaging</div>
-        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-5',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-5">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in the markdown file deployment_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
+        <div class="note-box mb-3"><i class="bi bi-info-circle"></i> <strong>What does packaging a static build mean?</strong> Vite turns your React app into plain HTML, CSS, and JavaScript files in a <code>dist</code> folder — that's the "production build." Serving it just means handing those files to a browser, which a tiny web server (Nginx, or a local preview server) does. Packaging with Docker bundles that server and the files together so the site starts the same way on any machine. Pick the version that matches your setup below — both produce the same deployment guide and validation report.</div>
+        <div class="btn-group mb-3" role="group" aria-label="Docker option">
+            <input type="radio" class="btn-check" name="p5-mode" id="p5-docker-radio" autocomplete="off" checked onchange="togglePackaging('docker')">
+            <label class="btn btn-outline-primary" for="p5-docker-radio"><i class="bi bi-box-seam"></i> I have Docker</label>
+            <input type="radio" class="btn-check" name="p5-mode" id="p5-nodocker-radio" autocomplete="off" onchange="togglePackaging('nodocker')">
+            <label class="btn btn-outline-primary" for="p5-nodocker-radio"><i class="bi bi-terminal"></i> I don't have Docker</label>
+        </div>
+        <div id="p-5-docker-wrap">
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-5-docker',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-5-docker">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in the markdown file deployment_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Package the frontend-only React Vite app generated in the job-app folder for local Operations use. Do not require AWS services, AWS credentials, CDK, S3, CloudFront, CloudFormation, or any cloud account.
 
@@ -339,7 +372,52 @@ Requirements:
 - Validate search, filter, detail view, application form submission, and localStorage persistence
 - Include commands for docker compose ps, docker compose logs, and docker compose down
 - Review the validation report and fix all identified issues, then update the validation report</pre></div>
+        </div>
+        <div id="p-5-nodocker-wrap" class="d-none">
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-5-nodocker',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-5-nodocker">Your Role: You are an experienced platform engineer. Before you start the task as mentioned below, please do the planning and write your steps in the markdown file deployment_plan.md file with checkboxes against each step in the plan. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
+
+Your Task: Package the frontend-only React Vite app generated in the job-app folder for local Operations use. I do not have Docker, so do not use Docker, docker-compose, Nginx, or containers at all. Do not require AWS services, AWS credentials, CDK, S3, CloudFront, CloudFormation, or any cloud account.
+
+Create:
+- .env.example if runtime configuration is useful
+- DEPLOYMENT/local-deployment-guide.md
+- DEPLOYMENT/validation-report.md
+
+Requirements:
+- Run npm install and npm run build to produce the production static build in job-app/dist
+- Serve the built site locally without Docker, using npm run preview (or a simple static file server such as npx serve dist), at http://localhost:4173
+- The deployment guide must include the exact commands to install dependencies, build, serve, and stop the site
+- Verify the site loads in the browser
+- Validate search, filter, detail view, application form submission, and localStorage persistence
+- Review the validation report and fix all identified issues, then update the validation report</pre></div>
+        </div>
         <div class="alert alert-secondary mt-2"><strong>After reviewing deployment_plan.md, respond:</strong><br><code>I updated the plan file. Please take my changes and comments into consideration then follow the plan as specified.</code></div>
+    </div>
+
+    <div class="mb-4">
+        <div class="prompt-title"><span class="step-badge">Operations</span> Step 6: Operations Phase Discussion</div>
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-6',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-6">Now that we've built and packaged our job application site, let's discuss the Operations Phase. Based on what we've created, how would AI help with:
+
+1. Packaging and serving static build updates locally
+2. Monitoring local server logs and browser-side behavior
+3. Exporting, clearing, or migrating localStorage application data
+4. Migrating from localStorage to an API and database later
+
+Please explain how this would work for our specific job application site.</pre></div>
+        <div class="note-box mt-3"><i class="bi bi-info-circle"></i> <strong>In this workflow, this is the last step.</strong> Keep in mind that the prompt-by-prompt sequence you just followed is <em>one</em> way to use AI agents for programming, not the only way. Other valid approaches include a free-form conversation where you describe what you want and iterate, spec-driven tools that generate from a written specification, or more autonomous workflows that take over larger portions of the work with less step-by-step input from you. The right approach depends on the project, your team, and how much control you want at each step.</div>
+    </div>
+
+    <div class="vision-section mt-5">
+        <h3>Test Your Application</h3>
+        <p>Rather than copying fixed commands, ask the AI to generate a test plan for the app <em>it actually built</em> — it knows your real pages, components, and any feature you added. Copy this prompt:</p>
+        <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-test',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-test">Generate a short manual test plan for the job application site we just built. Base it on the actual pages, components, and files in the project, not on assumptions. Include two parts:
+
+1. Browser/UI walkthrough: step-by-step actions I can take in the browser to confirm each feature works (for example, searching and filtering jobs, sorting, opening a job's detail view, submitting an application, refreshing the page to confirm my application persisted in localStorage, and any extra feature I added). Tell me which URL to open.
+
+2. Local run commands: the exact commands to install dependencies, build, and preview the site locally, plus how to open the browser developer tools to inspect the saved applications in localStorage.
+
+Keep it copy-paste ready.</pre></div>
+        <div class="form-text mt-2">Run the steps and commands the AI gives you. If anything fails, paste the error back to the AI and ask it to fix the code, then re-test.</div>
     </div>
 
     <div class="mb-4 mt-5">
@@ -371,11 +449,20 @@ Requirements:
             setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('btn-success'); btn.classList.add('btn-light'); }, 2000);
         });
     }
+    function togglePackaging(mode) {
+        document.getElementById('p-5-docker-wrap').classList.toggle('d-none', mode !== 'docker');
+        document.getElementById('p-5-nodocker-wrap').classList.toggle('d-none', mode !== 'nodocker');
+    }
     function updateTodoPlaceholder(spanId, value, defaultText) {
         const span = document.getElementById(spanId);
         if (!span) return;
-        span.textContent = value.trim() || defaultText;
-        span.classList.toggle('todo-placeholder', !value.trim());
+        const filled = !!value.trim();
+        span.textContent = filled ? value.trim() : defaultText;
+        // Keep the span highlighted either way: dashed/italic while it's still a
+        // blank, solid once the learner has filled it in, so they can always see
+        // exactly what got inserted into the prompt above.
+        span.classList.toggle('todo-placeholder', !filled);
+        span.classList.toggle('todo-filled', filled);
     }
     </script>
 </body>
