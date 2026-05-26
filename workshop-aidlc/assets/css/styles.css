@@ -396,3 +396,14 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--aws-orange);
+    z-index: 9999;
+    transition: width .1s linear;
+}

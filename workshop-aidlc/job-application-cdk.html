@@ -29,6 +29,7 @@
     </style>
 </head>
 <body>
+    <div id="scroll-progress"></div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html"><i class="bi bi-cpu"></i> AI-DLC Workshop Series</a>
@@ -46,7 +47,7 @@
             <div class="vision-section">
                 <div class="alert alert-info"><i class="bi bi-info-circle"></i> Follow the complete AI-DLC methodology to build a local-first job application site with open-source frontend tooling.</div>
                 <h3>Workshop Overview</h3>
-                <p><strong>Duration:</strong> ~3 hours | <strong>Project:</strong> Job Application Site | <strong>Stack:</strong> React / Vite / localStorage</p>
+                <p><strong>Project:</strong> Job Application Site | <strong>Stack:</strong> React / Vite / localStorage</p>
                 <p>Build a frontend-only job application management site that allows applicants to search, view, and apply to seeded job postings. Submitted applications are stored in browser <code>localStorage</code>. Docker Compose packaging is reserved for the Operations step.</p>
                 <h4>Prerequisites</h4>
                 <ul>
@@ -58,8 +59,24 @@
                     <li>Code editor</li>
                 </ul>
                 <a href="setup-instructions.html#workshop-2-setup" class="btn btn-success"><i class="bi bi-tools"></i> Workshop 2 Setup Instructions</a>
-                <p></p>
-                <h3>Task Overview</h3>
+                <div class="mt-3">
+                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#ws2-glossary"><i class="bi bi-book"></i> Key Terms for this Workshop</button>
+                    <div class="collapse mt-2" id="ws2-glossary">
+                        <div class="card card-body py-2">
+                            <dl class="row mb-0" style="font-size:.9rem;">
+                                <dt class="col-sm-3">React</dt><dd class="col-sm-9">A JavaScript library for building user interfaces from reusable components</dd>
+                                <dt class="col-sm-3">Vite</dt><dd class="col-sm-9">A fast build tool and local dev server for modern web apps</dd>
+                                <dt class="col-sm-3">localStorage</dt><dd class="col-sm-9">Browser storage that persists data between page refreshes without a server</dd>
+                                <dt class="col-sm-3">SPA</dt><dd class="col-sm-9">Single Page Application — a web app that loads once and updates content without full page reloads</dd>
+                                <dt class="col-sm-3">npm</dt><dd class="col-sm-9">Node Package Manager — used to install JavaScript libraries and run build scripts</dd>
+                                <dt class="col-sm-3">Nginx</dt><dd class="col-sm-9">A web server used to serve static files (HTML, CSS, JS) efficiently</dd>
+                                <dt class="col-sm-3">Docker Compose</dt><dd class="col-sm-9">Runs multi-container apps with a single configuration file</dd>
+                                <dt class="col-sm-3">Component Model</dt><dd class="col-sm-9">A design blueprint describing the building blocks of the site and how they interact</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-4">Task Overview</h3>
                 <p>We have just been hired by a new client to build their hit new job board. They are not very technical and are vague about the details. Here is what they have told us so far:</p>
                 <p>“We want a site where people looking for work can browse the jobs we have posted and apply right from the page. Folks should be able to search and narrow things down so they aren't scrolling forever, and it would be nice if they could save the postings they like to come back to later. That's roughly what we're picturing for now.”</p>
             </div>
@@ -232,7 +249,7 @@ Please explain how this would work for our specific application.</pre></div>
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Inception</span> Step 1: Intent to User Stories</div>
-        <div class="think-box mb-3">💡 For the following prompt, consider how you would describe the client's job board to a product manager, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
+        <div class="think-box mb-3">💡 Translating a vague client description into precise user stories is a core product manager skill — ambiguity caught here prevents misbuilt features later. For the following prompt, consider how you would describe the client's job board to a product manager, then fill in the blank before prompting. What did the client leave unclear, and what should we pin down?</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-1',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-1">Your Role: You are an expert product manager and are tasked with creating well defined user stories that becomes the contract for developing the system as mentioned in the Task section below. Plan for the work ahead and write your steps in a Markdown file: user_stories_plan.md with checkboxes for each step in the plan. List your Deliverables in the plan. If any step needs my clarification, add a note in the step to get my confirmation. Do not make critical decisions on your own. Upon completing the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Build user stories for the high level requirement as described here: "<span id="p-1-todo" class="todo-placeholder">✏️ TODO: fill in your application description below</span>"
@@ -261,6 +278,7 @@ Write the user stores to a user_stories.md file</pre></div>
 
 Your Task: Group these user stories in user_stories.md into multiple units that can be built independently. Each unit contains highly cohesive user stories that can be built by a single team. The units are loosely coupled with each other. For each unit, write the respective user stories and acceptance criteria in a units.md file.</pre></div>
         <div class="think-box mt-3">
+            Grouping related stories into independent units mirrors sprint planning — separate units let teams build in parallel without blocking each other.<br><br>
             <strong>📂 Check the artifacts before approving.</strong> Open <code>user_stories.md</code> and <code>units.md</code> and review what the AI produced.
             <br><br>
             User stories are the contract between you and the AI for everything that gets built next — every feature, every test, and every design decision will trace back to them.
@@ -276,6 +294,7 @@ Your Task: Group these user stories in user_stories.md into multiple units that 
 
 Your Task: Refer to the user stories in the units.md file. Design the component model to implement all the user stories. This model shall contain all the components, the attributes, the behaviors and how the components interact to implement the user stories. The components should be at a business level, do not generate any codes yet. Write the component model into a Markdown file: component_model.md.</pre></div>
         <div class="think-box mt-3">
+            A component model makes the design visible before any code exists — it's the last checkpoint to find missing pieces or unnecessary complexity.<br><br>
             <strong>📂 Check the artifacts before approving.</strong> Open <code>component_model.md</code> and review the component model the AI designed — no code has been written yet, only structure.
             <br><br>
             The component model defines the building blocks of the site: what components exist, what data they hold, what they can do, and how they communicate. This is the last checkpoint before the AI starts generating code.
@@ -287,7 +306,7 @@ Your Task: Refer to the user stories in the units.md file. Design the component 
 
     <div class="mb-4">
         <div class="prompt-title"><span class="step-badge">Construction</span> Step 4: Code Generation</div>
-        <div class="think-box mb-3">💡 Think about one additional feature you'd like the job board to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
+        <div class="think-box mb-3">💡 Structured prompts give AI a precise contract — this is how engineers get consistent, reviewable output from AI assistants. Think about one additional feature you'd like the job board to have besides the ones listed below, then describe it in the box below before copying the prompt.</div>
         <div class="prompt-box"><button class="btn btn-sm btn-light copy-btn" onclick="copyId('p-4',event)"><i class="bi bi-clipboard"></i> Copy</button><pre id="p-4">Your Role: You are an experienced software engineer. Before you start the task as mentioned below, please do the planning and write your steps in the markdown file react_app_plan.md file with checkboxes against each step in the plan. List your Deliverables in the plan file. If any step needs my clarification, please add it to the step to interact with me and get my confirmation. Do not make critical decisions on your own. Once you produce the plan, ask for my review and approval. After my approval, you can go ahead to execute the same plan one step at a time. Once you finish each step, mark the checkboxes as done in the plan.
 
 Your Task: Refer to component design in the component_model.md file and the units.md file.
@@ -377,6 +396,11 @@ Requirements:
         span.textContent = value.trim() || defaultText;
         span.classList.toggle('todo-placeholder', !value.trim());
     }
+    window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        document.getElementById('scroll-progress').style.width = (docHeight > 0 ? scrollTop / docHeight * 100 : 0) + '%';
+    });
     </script>
 </body>
 </html>
